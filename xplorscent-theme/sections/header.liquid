@@ -1,0 +1,260 @@
+<div
+  class="header-wrapper"
+  {% if section.settings.sticky_behavior == 'scroll-up' %}data-sticky-behavior="scroll-up"{% endif %}
+>
+  <header class="header container">
+    <div class="header__left">
+      <button
+        type="button"
+        class="header__menu-toggle icon-button"
+        data-drawer-open="MenuDrawer"
+        aria-expanded="false"
+        aria-controls="MenuDrawer"
+        aria-label="{{ 'sections.header.menu' | t }}"
+      >
+        {% render 'icon', icon: 'menu', size: 22 %}
+      </button>
+
+      <nav class="header__nav" aria-label="{{ 'sections.header.main_navigation' | t }}">
+        <ul class="header__menu">
+          {%- for link in section.settings.menu.links -%}
+            {%- if link.links != blank -%}
+              <li class="header__dropdown">
+                <a
+                  href="{{ link.url }}"
+                  class="header__menu-link{% if link.current %} header__menu-link--active{% endif %}"
+                  aria-haspopup="true"
+                >
+                  {{ link.title | escape }}
+                  {% render 'icon', icon: 'chevron-down', size: 14 %}
+                </a>
+                <ul class="header__submenu">
+                  {%- for childlink in link.links -%}
+                    <li><a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              </li>
+            {%- else -%}
+              <li>
+                <a href="{{ link.url }}" class="header__menu-link{% if link.current %} header__menu-link--active{% endif %}">
+                  {{ link.title | escape }}
+                </a>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </nav>
+    </div>
+
+    {%- if request.page_type == 'index' -%}
+      <h1 class="header__logo-wrapper" style="margin: 0;">
+    {%- else -%}
+      <div class="header__logo-wrapper">
+    {%- endif -%}
+      <a href="{{ routes.root_url }}" class="header__logo">
+        {%- if section.settings.logo != blank -%}
+          {%- assign logo_style = 'max-width:' | append: section.settings.logo_width | append: 'px' -%}
+          {{
+            section.settings.logo
+            | image_url: width: 400
+            | image_tag:
+              widths: '200, 400',
+              width: section.settings.logo_width,
+              alt: shop.name,
+              loading: 'eager',
+              style: logo_style
+          }}
+        {%- else -%}
+          <span class="header__logo-text">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+    {%- if request.page_type == 'index' -%}
+      </h1>
+    {%- else -%}
+      </div>
+    {%- endif -%}
+
+    <div class="header__icons">
+      <button
+        type="button"
+        class="icon-button"
+        data-drawer-open="SearchDrawer"
+        aria-expanded="false"
+        aria-controls="SearchDrawer"
+        aria-label="{{ 'general.search.search' | t }}"
+      >
+        {% render 'icon', icon: 'search', size: 21 %}
+      </button>
+
+      {%- if shop.customer_accounts_enabled -%}
+        <a
+          href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+          class="icon-button header__account"
+          aria-label="{{ 'customer.account_fallback' | t }}"
+        >
+          {% render 'icon', icon: 'account', size: 21 %}
+        </a>
+      {%- endif -%}
+
+      <button
+        type="button"
+        class="icon-button header__cart"
+        data-cart-drawer-open
+        aria-label="{{ 'sections.header.cart_count' | t: count: cart.item_count }}"
+      >
+        {% render 'icon', icon: 'bag', size: 21 %}
+        <span class="cart-count-bubble{% if cart.item_count == 0 %} visually-hidden{% endif %}" data-cart-count-bubble aria-hidden="true">
+          {%- if cart.item_count > 0 -%}{{ cart.item_count }}{%- endif -%}
+        </span>
+      </button>
+    </div>
+  </header>
+</div>
+
+{%- comment -%} Mobile menu drawer {%- endcomment -%}
+<div id="MenuDrawer" class="drawer js-drawer" aria-hidden="false">
+  <div class="drawer__overlay" data-drawer-close></div>
+  <div class="drawer__panel drawer__panel--left" role="dialog" aria-modal="true" aria-label="{{ 'sections.header.menu' | t }}" tabindex="-1">
+    <div class="drawer__header">
+      <span class="header__logo-text">{{ shop.name }}</span>
+      <button type="button" class="icon-button" data-drawer-close aria-label="{{ 'accessibility.close' | t }}">
+        {% render 'icon', icon: 'close', size: 20 %}
+      </button>
+    </div>
+    <nav class="menu-drawer__nav" aria-label="{{ 'sections.header.main_navigation' | t }}">
+      <ul class="menu-drawer__list">
+        {%- for link in section.settings.menu.links -%}
+          <li>
+            {%- if link.links != blank -%}
+              <details class="menu-drawer__toggle">
+                <summary class="menu-drawer__link">
+                  {{ link.title | escape }}
+                  {% render 'icon', icon: 'chevron-down', size: 18 %}
+                </summary>
+                <ul class="menu-drawer__sublist">
+                  {%- for childlink in link.links -%}
+                    <li><a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              </details>
+            {%- else -%}
+              <a href="{{ link.url }}" class="menu-drawer__link">{{ link.title | escape }}</a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+    <div class="menu-drawer__footer">
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
+          {% render 'icon', icon: 'account', size: 18 %}
+          {{ 'customer.account_fallback' | t }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{%- comment -%} Search drawer {%- endcomment -%}
+<div id="SearchDrawer" class="drawer js-drawer">
+  <div class="drawer__overlay" data-drawer-close></div>
+  <div class="search-drawer__panel" role="dialog" aria-modal="true" aria-label="{{ 'general.search.search' | t }}">
+    <div class="container">
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search-drawer__form">
+        {% render 'icon', icon: 'search', size: 20 %}
+        <input
+          type="search"
+          name="q"
+          class="search-drawer__input"
+          placeholder="{{ 'general.search.placeholder' | t }}"
+          aria-label="{{ 'general.search.search' | t }}"
+          data-drawer-autofocus
+        >
+        <input type="hidden" name="options[prefix]" value="last">
+        <button type="button" class="icon-button" data-drawer-close aria-label="{{ 'accessibility.close' | t }}">
+          {% render 'icon', icon: 'close', size: 20 %}
+        </button>
+      </form>
+      {%- if section.settings.search_menu != blank -%}
+        <div class="search-drawer__links">
+          <span class="caption">{{ 'general.search.popular' | t }}</span>
+          {%- for link in section.settings.search_menu.links -%}
+            <a href="{{ link.url }}" class="pill">{{ link.title | escape }}</a>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{%- if request.page_type == 'index' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": {{ shop.name | json }},
+      "url": {{ request.origin | append: page.url | json }}
+      {%- if section.settings.logo != blank -%},
+      "logo": {{ section.settings.logo | image_url: width: 500 | prepend: "https:" | json }}
+      {%- endif -%}
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "url": {{ request.origin | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ request.origin | append: routes.search_url | append: "?q={search_term_string}" | json }},
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width",
+      "min": 60,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 140
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "link_list",
+      "id": "search_menu",
+      "label": "Popular search links",
+      "info": "Shown inside the search drawer."
+    },
+    {
+      "type": "select",
+      "id": "sticky_behavior",
+      "label": "Sticky header",
+      "options": [
+        { "value": "always", "label": "Always visible" },
+        { "value": "scroll-up", "label": "Hide while scrolling down" }
+      ],
+      "default": "scroll-up"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,113 @@
+<section class="section">
+  <div class="container">
+    <div class="section__header">
+      <h1>{{ 'sections.cart.title' | t }}</h1>
+    </div>
+
+    {%- if cart == empty -%}
+      <div class="collection-empty">
+        <h2>{{ 'sections.cart.empty' | t }}</h2>
+        <p class="section__subheading">{{ 'sections.cart.empty_text' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="button">{{ 'general.continue_shopping' | t }}</a>
+      </div>
+    {%- else -%}
+      <form action="{{ routes.cart_url }}" method="post" class="cart-page">
+        <div class="cart-page__items">
+          {%- for item in cart.items -%}
+            <div class="cart-item">
+              <a href="{{ item.url }}" class="cart-item__media" tabindex="-1" aria-hidden="true">
+                {%- if item.image -%}
+                  {{ item.image | image_url: width: 300 | image_tag: widths: '150, 300', sizes: '100px', loading: 'lazy', alt: item.image.alt }}
+                {%- endif -%}
+              </a>
+              <div class="cart-item__details">
+                <a href="{{ item.url }}" class="cart-item__title">{{ item.product.title | escape }}</a>
+                {%- unless item.product.has_only_default_variant -%}
+                  <p class="cart-item__variant caption">{{ item.variant.title | escape }}</p>
+                {%- endunless -%}
+                {%- if item.original_line_price != item.final_line_price -%}
+                  <s class="caption">{{ item.original_line_price | money }}</s>
+                {%- endif -%}
+                <div class="cart-item__controls">
+                  <label class="visually-hidden" for="CartQuantity-{{ forloop.index }}">
+                    {{ 'products.product.quantity.label' | t }}
+                  </label>
+                  <quantity-input class="quantity">
+                    <button type="button" class="quantity__button" name="minus" aria-label="{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}">
+                      {% render 'icon', icon: 'minus', size: 14 %}
+                    </button>
+                    <input
+                      class="quantity__input"
+                      type="number"
+                      id="CartQuantity-{{ forloop.index }}"
+                      name="updates[]"
+                      value="{{ item.quantity }}"
+                      min="0"
+                      inputmode="numeric"
+                      aria-label="{{ 'products.product.quantity.label' | t }}"
+                    >
+                    <button type="button" class="quantity__button" name="plus" aria-label="{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}">
+                      {% render 'icon', icon: 'plus', size: 14 %}
+                    </button>
+                  </quantity-input>
+                  <a
+                    href="{{ item.url_to_remove }}"
+                    class="cart-item__remove icon-button"
+                    aria-label="{{ 'sections.cart.remove_title' | t: title: item.title | escape }}"
+                  >
+                    {% render 'icon', icon: 'trash', size: 16 %}
+                  </a>
+                </div>
+              </div>
+              <div class="cart-item__price">
+                <span>{{ item.final_line_price | money }}</span>
+              </div>
+            </div>
+          {%- endfor -%}
+
+          <button type="submit" name="update" class="button button--secondary button--small" style="margin-top: 2rem;">
+            {{ 'sections.cart.update' | t }}
+          </button>
+        </div>
+
+        <aside class="cart-page__summary" aria-label="{{ 'sections.cart.summary' | t }}">
+          {%- if section.settings.show_note -%}
+            <details class="cart-drawer__note">
+              <summary class="caption">{{ 'sections.cart.note' | t }}</summary>
+              <textarea name="note" placeholder="{{ 'sections.cart.note' | t }}">{{ cart.note }}</textarea>
+            </details>
+          {%- endif -%}
+
+          <div class="cart-drawer__subtotal">
+            <span>{{ 'sections.cart.subtotal' | t }}</span>
+            <span>{{ cart.total_price | money_with_currency }}</span>
+          </div>
+          <p class="caption">
+            {%- if cart.taxes_included -%}
+              {{ 'sections.cart.taxes_included' | t }}
+            {%- else -%}
+              {{ 'sections.cart.taxes_at_checkout' | t }}
+            {%- endif -%}
+          </p>
+          <button type="submit" name="checkout" class="button button--full">
+            {{ 'sections.cart.checkout' | t }}
+          </button>
+        </aside>
+      </form>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_note",
+      "label": "Show order note",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

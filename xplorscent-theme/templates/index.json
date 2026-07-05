@@ -1,0 +1,257 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "blocks": {
+        "eyebrow": {
+          "type": "eyebrow",
+          "settings": { "text": "Crafted in Dubai" }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": { "heading": "Fragrance, made to be explored", "size": "h0" }
+        },
+        "text": {
+          "type": "text",
+          "settings": { "text": "French artistry. Arabian oud. Unisex eaux de parfum composed for the curious." }
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": {
+            "button_label": "Shop fragrances",
+            "button_link": "shopify://collections/all",
+            "button_label_2": "Try the Discovery Set",
+            "button_link_2": ""
+          }
+        }
+      },
+      "block_order": ["eyebrow", "heading", "text", "buttons"],
+      "settings": {
+        "height": "large",
+        "content_position": "bottom-left",
+        "overlay_opacity": 25
+      }
+    },
+    "best_sellers": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "The collection",
+        "heading": "Best sellers",
+        "subheading": "Signatures our explorers return to, season after season.",
+        "collection": "all",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "enable_mobile_scroll": true,
+        "background": "default"
+      }
+    },
+    "scent_finder": {
+      "type": "scent-finder",
+      "blocks": {
+        "oud": {
+          "type": "family",
+          "settings": { "title": "Oud & Woody", "notes": "Oud wood · Black pepper" }
+        },
+        "floral": {
+          "type": "family",
+          "settings": { "title": "Floral", "notes": "Jasmine · Sandalwood" }
+        },
+        "fresh": {
+          "type": "family",
+          "settings": { "title": "Fresh & Citrus", "notes": "Bergamot · Apple" }
+        },
+        "oriental": {
+          "type": "family",
+          "settings": { "title": "Oriental", "notes": "Vanilla · Amber" }
+        }
+      },
+      "block_order": ["oud", "floral", "fresh", "oriental"],
+      "settings": {
+        "eyebrow": "Find yours",
+        "heading": "Which scent are you?",
+        "subheading": "Every XplorScent composition belongs to a family. Start with the mood you love.",
+        "cta_text": "Can't decide? Try all five signatures in miniature.",
+        "cta_label": "Shop the Discovery Set"
+      }
+    },
+    "story": {
+      "type": "image-with-text",
+      "blocks": {
+        "eyebrow": { "type": "eyebrow", "settings": { "text": "Our story" } },
+        "heading": { "type": "heading", "settings": { "heading": "Two traditions, one signature" } },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>XplorScent was born where French perfumery meets the depth of Arabian oud. Every composition is crafted in Dubai with a simple belief: fine fragrance should be an everyday pleasure, not a rare occasion.</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": { "button_label": "Read our story", "button_link": "shopify://pages/about", "style": "link" }
+        }
+      },
+      "block_order": ["eyebrow", "heading", "text", "button"],
+      "settings": {
+        "image_ratio": "portrait",
+        "layout": "image_first",
+        "background": "surface"
+      }
+    },
+    "why": {
+      "type": "multicolumn",
+      "blocks": {
+        "crafted": {
+          "type": "column",
+          "settings": {
+            "icon": "droplet",
+            "title": "Crafted in Dubai",
+            "text": "<p>Composed with rare oud and fine French ingredients, bottled with care.</p>"
+          }
+        },
+        "unisex": {
+          "type": "column",
+          "settings": {
+            "icon": "leaf",
+            "title": "Unisex by design",
+            "text": "<p>Scents built around character, not category — made for everyone.</p>"
+          }
+        },
+        "longevity": {
+          "type": "column",
+          "settings": {
+            "icon": "shield",
+            "title": "Lasting wear",
+            "text": "<p>High-concentration eaux de parfum designed to stay with you all day.</p>"
+          }
+        },
+        "shipping": {
+          "type": "column",
+          "settings": {
+            "icon": "truck",
+            "title": "Fast, tracked shipping",
+            "text": "<p>Carefully packed and shipped with tracking on every order.</p>"
+          }
+        }
+      },
+      "block_order": ["crafted", "unisex", "longevity", "shipping"],
+      "settings": {
+        "eyebrow": "The difference",
+        "heading": "Why XplorScent",
+        "columns_desktop": 4,
+        "center_content": true,
+        "background": "default"
+      }
+    },
+    "reviews": {
+      "type": "testimonials",
+      "blocks": {
+        "review_1": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "quote": "The One is unlike anything on my shelf — deep, warm and it lasts all day. I get asked about it constantly.",
+            "author": "Sarah M.",
+            "detail": "Verified buyer — The One"
+          }
+        },
+        "review_2": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "quote": "Victorious is my everyday signature now. Fresh, elegant, never overwhelming.",
+            "author": "Omar K.",
+            "detail": "Verified buyer — Victorious"
+          }
+        },
+        "review_3": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "quote": "The Discovery Set was the perfect way in. Five little journeys — I ended up buying two full bottles.",
+            "author": "Elena R.",
+            "detail": "Verified buyer — Discovery Set"
+          }
+        }
+      },
+      "block_order": ["review_1", "review_2", "review_3"],
+      "settings": {
+        "eyebrow": "Reviews",
+        "heading": "Worn and loved",
+        "background": "surface"
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Just landed",
+        "heading": "New & noteworthy",
+        "collection": "",
+        "products_to_show": 4,
+        "show_view_all": false,
+        "enable_mobile_scroll": true,
+        "background": "default"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "How long do your fragrances last?",
+            "answer": "<p>Our eaux de parfum are composed at a high concentration for 8+ hours of wear. Longevity varies with skin type — apply to pulse points and moisturized skin for best results.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Are your fragrances unisex?",
+            "answer": "<p>Yes — every XplorScent composition is designed to be worn by anyone. We build scents around character and mood, not categories.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "What is the Discovery Set?",
+            "answer": "<p>Five 3&nbsp;mL miniatures of our signature fragrances — the perfect low-risk way to find your scent before committing to a full bottle.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Where do you ship?",
+            "answer": "<p>We ship worldwide with tracked delivery. Orders are dispatched within 1–2 business days.</p>"
+          }
+        }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"],
+      "settings": {
+        "eyebrow": "FAQ",
+        "heading": "Questions, answered",
+        "open_first": true,
+        "show_contact_link": true,
+        "enable_schema": true
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Newsletter",
+        "heading": "Join the exploration",
+        "text": "Be first to discover new fragrances, private launches and stories from the atelier.",
+        "background": "inverse"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "best_sellers",
+    "scent_finder",
+    "story",
+    "why",
+    "reviews",
+    "featured",
+    "faq",
+    "newsletter"
+  ]
+}

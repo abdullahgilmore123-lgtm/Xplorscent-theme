@@ -1,0 +1,45 @@
+<section class="section" data-recently-viewed-section hidden>
+  <div class="container">
+    <recently-viewed
+      data-limit="{{ section.settings.products_to_show }}"
+      {% if request.page_type == 'product' %}data-exclude="{{ product.handle }}"{% endif %}
+    >
+      <div class="section__header">
+        <h2>{{ section.settings.heading | escape }}</h2>
+      </div>
+      <div class="product-grid product-grid--4" data-recently-viewed-grid role="list"></div>
+    </recently-viewed>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Recently viewed",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shows products the visitor has viewed, stored privately in their browser. The section stays hidden until there is something to show."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Recently viewed"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recently viewed"
+    }
+  ]
+}
+{% endschema %}

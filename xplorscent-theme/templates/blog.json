@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "settings": { "show_excerpt": true, "show_author": false }
+    }
+  },
+  "order": ["main"]
+}

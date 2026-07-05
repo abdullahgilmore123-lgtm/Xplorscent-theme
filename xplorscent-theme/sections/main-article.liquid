@@ -1,0 +1,116 @@
+<article class="section">
+  <div class="container">
+    <div class="article">
+      <header class="article__header">
+        <p class="caption">
+          {{ article.published_at | time_tag: format: 'date' }}
+          {%- if section.settings.show_author %} · {{ article.author }}{% endif -%}
+        </p>
+        <h1>{{ article.title | escape }}</h1>
+      </header>
+
+      {%- if article.image and section.settings.show_image -%}
+        <div class="article__image media media--landscape">
+          {{
+            article.image
+            | image_url: width: 1600
+            | image_tag: widths: '750, 1100, 1600', sizes: '(min-width: 990px) 76rem, 100vw', loading: 'eager', fetchpriority: 'high', alt: article.image.alt
+          }}
+        </div>
+      {%- endif -%}
+
+      <div class="rte">
+        {{ article.content }}
+      </div>
+
+      {%- if blog.comments_enabled? -%}
+        <div style="margin-top: 6rem;">
+          <h2 class="h3" style="margin-bottom: 2.4rem;">
+            {{ 'sections.main_article.comments' | t: count: article.comments_count }}
+          </h2>
+
+          {%- paginate article.comments by 10 -%}
+            {%- for comment in article.comments -%}
+              <div style="padding-block: 2rem; border-bottom: 1px solid rgba(var(--color-foreground), 0.1);">
+                <p class="caption">{{ comment.author }} · {{ comment.created_at | time_tag: format: 'date' }}</p>
+                <div class="rte">{{ comment.content }}</div>
+              </div>
+            {%- endfor -%}
+            {% render 'pagination', paginate: paginate %}
+          {%- endpaginate -%}
+
+          {%- form 'new_comment', article -%}
+            <h3 class="h4" style="margin: 3.2rem 0 2rem;">{{ 'sections.main_article.comment_form_title' | t }}</h3>
+            {%- if form.posted_successfully? -%}
+              <p class="form__message form__message--success" role="status">
+                {% render 'icon', icon: 'success', size: 16 %}
+                {%- if blog.moderated? -%}
+                  {{ 'sections.main_article.comment_moderated' | t }}
+                {%- else -%}
+                  {{ 'sections.main_article.comment_success' | t }}
+                {%- endif -%}
+              </p>
+            {%- endif -%}
+            {%- if form.errors -%}
+              <p class="form__message form__message--error" role="alert">
+                {% render 'icon', icon: 'error', size: 16 %}
+                {{ 'templates.contact.error_heading' | t }}
+              </p>
+            {%- endif -%}
+            <div class="form__row form__row--half">
+              <div class="field">
+                <label class="field__label" for="CommentAuthor">{{ 'templates.contact.name' | t }}</label>
+                <input class="field__input" type="text" id="CommentAuthor" name="comment[author]" value="{{ form.author }}" required>
+              </div>
+              <div class="field">
+                <label class="field__label" for="CommentEmail">{{ 'templates.contact.email' | t }}</label>
+                <input class="field__input" type="email" id="CommentEmail" name="comment[email]" value="{{ form.email }}" required>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="CommentBody">{{ 'sections.main_article.comment_label' | t }}</label>
+              <textarea id="CommentBody" name="comment[body]" rows="5" required>{{ form.body }}</textarea>
+            </div>
+            <div class="form__actions">
+              <button type="submit" class="button">{{ 'sections.main_article.comment_submit' | t }}</button>
+            </div>
+          {%- endform -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": {{ article.title | json }},
+      "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+      {%- if article.image -%}
+        "image": [{{ article.image | image_url: width: 1200 | prepend: "https:" | json }}],
+      {%- endif -%}
+      "author": { "@type": "Person", "name": {{ article.author | json }} },
+      "publisher": { "@type": "Organization", "name": {{ shop.name | json }} }
+    }
+  </script>
+</article>
+
+{% schema %}
+{
+  "name": "Article",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show featured image",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "label": "Show author",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

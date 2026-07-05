@@ -1,0 +1,40 @@
+{
+  "sections": {
+    "main": {
+      "type": "contact-form",
+      "settings": {
+        "eyebrow": "Contact",
+        "heading": "We're here to help",
+        "text": "A question about a scent, an order or anything else — write to us and we'll reply within one business day."
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Where is my order?",
+            "answer": "<p>You'll receive a tracking link by email as soon as your order ships — usually within 1–2 business days.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Can I return a fragrance?",
+            "answer": "<p>Unopened items can be returned within 30 days of delivery. Write to us and we'll arrange it.</p>"
+          }
+        }
+      },
+      "block_order": ["q1", "q2"],
+      "settings": {
+        "eyebrow": "Quick answers",
+        "heading": "Before you write",
+        "open_first": false,
+        "show_contact_link": false,
+        "enable_schema": false
+      }
+    }
+  },
+  "order": ["main", "faq"]
+}

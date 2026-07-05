@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "settings": { "show_image": true, "show_author": false }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Newsletter",
+        "heading": "Join the exploration",
+        "text": "Stories from the atelier, straight to your inbox.",
+        "background": "surface"
+      }
+    }
+  },
+  "order": ["main", "newsletter"]
+}

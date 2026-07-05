@@ -1,0 +1,60 @@
+{
+  "sections": {
+    "main": {
+      "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "How long do your fragrances last?",
+            "answer": "<p>Our eaux de parfum are composed at a high concentration for 8+ hours of wear. Longevity varies with skin type — apply to pulse points and moisturized skin for best results.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Are your fragrances unisex?",
+            "answer": "<p>Yes — every XplorScent composition is designed to be worn by anyone.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "What is the Discovery Set?",
+            "answer": "<p>Five 3&nbsp;mL miniatures of our signature fragrances — the perfect way to find your scent before committing to a full bottle.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Where do you ship?",
+            "answer": "<p>We ship worldwide with tracked delivery. Orders are dispatched within 1–2 business days.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>Unopened items can be returned within 30 days of delivery for a full refund. Contact us and we'll arrange everything.</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "How should I store my fragrance?",
+            "answer": "<p>Keep bottles away from direct sunlight and heat — a cool, dark shelf preserves the composition for years.</p>"
+          }
+        }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"],
+      "settings": {
+        "eyebrow": "Help",
+        "heading": "Frequently asked questions",
+        "open_first": true,
+        "show_contact_link": true,
+        "enable_schema": true
+      }
+    }
+  },
+  "order": ["main"]
+}

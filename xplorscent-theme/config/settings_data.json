@@ -1,0 +1,26 @@
+{
+  "current": {
+    "color_background": "#FDFCFA",
+    "color_surface": "#F4F0E9",
+    "color_text": "#1C1B19",
+    "color_accent": "#8A6D4A",
+    "color_button": "#1C1B19",
+    "color_button_text": "#FDFCFA",
+    "color_inverse": "#191714",
+    "type_heading_font": "eb_garamond_n4",
+    "heading_scale": 100,
+    "type_body_font": "assistant_n4",
+    "body_scale": 100,
+    "page_width": 1400,
+    "spacing_sections": 96,
+    "spacing_grid": 24,
+    "buttons_radius": 2,
+    "card_radius": 4,
+    "inputs_radius": 2,
+    "card_image_ratio": "portrait",
+    "show_secondary_image": true,
+    "show_vendor": false,
+    "enable_quick_add": true,
+    "currency_code_enabled": false
+  }
+}

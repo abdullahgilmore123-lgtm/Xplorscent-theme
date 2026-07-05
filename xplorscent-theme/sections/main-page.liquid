@@ -1,0 +1,24 @@
+<section class="section">
+  <div class="container container--narrow">
+    <div class="section__header{% if section.settings.center_heading %} section__header--center{% endif %}">
+      <h1>{{ page.title | escape }}</h1>
+    </div>
+    <div class="rte">
+      {{ page.content }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "center_heading",
+      "label": "Center heading",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

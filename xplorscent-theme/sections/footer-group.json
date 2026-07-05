@@ -1,0 +1,42 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "shop": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Explore",
+            "menu": "main-menu"
+          }
+        },
+        "support": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Support",
+            "menu": "footer"
+          }
+        },
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "heading": "Join the exploration",
+            "text": "New fragrances, private launches and stories from the atelier. No noise."
+          }
+        }
+      },
+      "block_order": ["shop", "support", "newsletter"],
+      "settings": {
+        "tagline": "Where French artistry meets the mystery of Arabian oud. Crafted in Dubai, made to be explored.",
+        "show_social": true,
+        "show_policies": true,
+        "show_payment_icons": true,
+        "enable_country_selector": true,
+        "enable_language_selector": false
+      }
+    }
+  },
+  "order": ["footer"]
+}

@@ -1,0 +1,90 @@
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <div class="search-header">
+      <h1>
+        {%- if search.performed and search.terms != blank -%}
+          {{ 'general.search.results_for' | t: terms: search.terms }}
+        {%- else -%}
+          {{ 'general.search.search' | t }}
+        {%- endif -%}
+      </h1>
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search-header__form">
+        <input
+          type="search"
+          name="q"
+          class="search-header__input"
+          value="{{ search.terms | escape }}"
+          placeholder="{{ 'general.search.placeholder' | t }}"
+          aria-label="{{ 'general.search.search' | t }}"
+        >
+        <input type="hidden" name="options[prefix]" value="last">
+        <button type="submit" class="icon-button" aria-label="{{ 'general.search.search' | t }}">
+          {% render 'icon', icon: 'search', size: 20 %}
+        </button>
+      </form>
+      {%- if search.performed -%}
+        <p class="caption" role="status">
+          {{ 'general.search.results_count' | t: count: search.results_count }}
+        </p>
+      {%- endif -%}
+    </div>
+
+    {%- if search.performed -%}
+      {%- paginate search.results by 16 -%}
+        {%- if search.results_count == 0 -%}
+          <div class="collection-empty">
+            <h2>{{ 'general.search.no_results' | t }}</h2>
+            <p class="section__subheading">{{ 'general.search.no_results_text' | t }}</p>
+            <a href="{{ routes.all_products_collection_url }}" class="button">{{ 'general.continue_shopping' | t }}</a>
+          </div>
+        {%- else -%}
+          {%- if section.settings.enable_filtering -%}
+            {% render 'facets', results: search, results_url: routes.search_url %}
+          {%- endif -%}
+
+          <div class="product-grid product-grid--4" role="list" style="margin-top: 3.2rem;">
+            {%- for item in search.results -%}
+              <div role="listitem">
+                {%- case item.object_type -%}
+                  {%- when 'product' -%}
+                    {% render 'product-card', card_product: item, section_id: section.id %}
+                  {%- when 'article' -%}
+                    <article class="article-card">
+                      {%- if item.image -%}
+                        <a href="{{ item.url }}" class="article-card__media media media--landscape" tabindex="-1">
+                          {{ item.image | image_url: width: 800 | image_tag: widths: '400, 800', sizes: '(min-width: 990px) 25vw, 50vw', loading: 'lazy', alt: item.image.alt }}
+                        </a>
+                      {%- endif -%}
+                      <p class="caption">{{ 'sections.main_blog.article' | t }}</p>
+                      <h3 class="article-card__title h5"><a href="{{ item.url }}">{{ item.title | escape }}</a></h3>
+                    </article>
+                  {%- when 'page' -%}
+                    <article class="article-card">
+                      <p class="caption">{{ 'general.search.page' | t }}</p>
+                      <h3 class="article-card__title h5"><a href="{{ item.url }}">{{ item.title | escape }}</a></h3>
+                    </article>
+                {%- endcase -%}
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {% render 'pagination', paginate: paginate %}
+      {%- endpaginate -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Search results",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "label": "Enable filtering",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

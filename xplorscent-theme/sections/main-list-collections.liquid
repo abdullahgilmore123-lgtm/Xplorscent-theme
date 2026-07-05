@@ -1,0 +1,40 @@
+<section class="section">
+  <div class="container">
+    <div class="section__header section__header--center">
+      <h1>{{ 'sections.list_collections.title' | t }}</h1>
+    </div>
+
+    {%- paginate collections by 12 -%}
+      <div class="grid list-collections" role="list">
+        {%- for collection in collections -%}
+          <a href="{{ collection.url }}" class="collection-card" role="listitem">
+            <div class="media media--landscape">
+              {%- if collection.featured_image != blank -%}
+                {{
+                  collection.featured_image
+                  | image_url: width: 900
+                  | image_tag: widths: '450, 700, 900', sizes: '(min-width: 750px) 33vw, 100vw', loading: 'lazy', alt: collection.featured_image.alt
+                }}
+              {%- else -%}
+                <div class="media__placeholder">{{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+              {%- endif -%}
+            </div>
+            <div class="collection-card__content">
+              <h2 class="collection-card__title h4">{{ collection.title | escape }}</h2>
+              {% render 'icon', icon: 'arrow-right', size: 18 %}
+            </div>
+          </a>
+        {%- endfor -%}
+      </div>
+
+      {% render 'pagination', paginate: paginate %}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collections list",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,94 @@
+{% comment %}
+  Renders a product card.
+
+  Accepts:
+  - card_product: {Object} Product (required)
+  - lazy_load: {Boolean} Defaults to true
+  - section_id: {String} Used to build unique ids
+{% endcomment %}
+
+{%- liquid
+  assign lazy = lazy_load | default: true, allow_false: true
+  if lazy
+    assign loading_attr = 'lazy'
+  else
+    assign loading_attr = 'eager'
+  endif
+  assign ratio_class = 'media--portrait'
+  if settings.card_image_ratio == 'square'
+    assign ratio_class = 'media--square'
+  endif
+-%}
+
+<article class="product-card" aria-labelledby="CardTitle-{{ section_id }}-{{ card_product.id }}">
+  <a href="{{ card_product.url }}" class="product-card__link" tabindex="-1" aria-hidden="true">
+    <div class="product-card__media media {{ ratio_class }}">
+      {%- if card_product.featured_media -%}
+        {{
+          card_product.featured_media
+          | image_url: width: 900
+          | image_tag:
+            widths: '360, 540, 720, 900',
+            sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
+            class: 'product-card__image',
+            loading: loading_attr,
+            alt: card_product.featured_media.alt
+        }}
+        {%- if settings.show_secondary_image and card_product.media[1] != blank -%}
+          {{
+            card_product.media[1]
+            | image_url: width: 900
+            | image_tag:
+              widths: '360, 540, 720, 900',
+              sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
+              class: 'product-card__image product-card__image--secondary',
+              loading: 'lazy',
+              alt: card_product.media[1].alt
+          }}
+        {%- endif -%}
+      {%- else -%}
+        <div class="media__placeholder">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+      {%- endif -%}
+
+      {%- if card_product.available == false -%}
+        <span class="badge badge--sold-out">{{ 'products.product.sold_out' | t }}</span>
+      {%- elsif card_product.compare_at_price > card_product.price -%}
+        <span class="badge badge--sale">{{ 'products.product.on_sale' | t }}</span>
+      {%- endif -%}
+    </div>
+  </a>
+
+  <div class="product-card__info">
+    {%- if settings.show_vendor and card_product.vendor != blank -%}
+      <p class="product-card__vendor caption">{{ card_product.vendor }}</p>
+    {%- elsif card_product.type != blank -%}
+      <p class="product-card__vendor caption">{{ card_product.type }}</p>
+    {%- endif -%}
+
+    <h3 class="product-card__title" id="CardTitle-{{ section_id }}-{{ card_product.id }}">
+      <a href="{{ card_product.url }}">{{ card_product.title | escape }}</a>
+    </h3>
+
+    {% render 'rating', product: card_product, show_count: true %}
+    {% render 'price', product: card_product %}
+
+    {%- if settings.enable_quick_add -%}
+      {%- if card_product.variants.size == 1 and card_product.available -%}
+        <product-form class="product-card__quick-add">
+          {%- form 'product', card_product, data-type: 'add-to-cart-form' -%}
+            <input type="hidden" name="id" value="{{ card_product.selected_or_first_available_variant.id }}">
+            <button type="submit" name="add" class="button button--secondary button--small">
+              <span>{{ 'products.product.add_to_cart' | t }}</span>
+            </button>
+          {%- endform -%}
+        </product-form>
+      {%- elsif card_product.available -%}
+        <div class="product-card__quick-add">
+          <a href="{{ card_product.url }}" class="button button--secondary button--small">
+            {{ 'products.product.choose_options' | t }}
+          </a>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</article>

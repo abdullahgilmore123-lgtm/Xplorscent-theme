@@ -1,0 +1,51 @@
+{%- if section.settings.show_image and collection.image != blank -%}
+  <div class="collection-banner collection-banner--image">
+    <div class="collection-banner__media">
+      {{
+        collection.image
+        | image_url: width: 2400
+        | image_tag: widths: '750, 1100, 1500, 2400', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: collection.image.alt
+      }}
+    </div>
+    <div class="container">
+      <div class="collection-banner__content">
+        <h1>{{ collection.title | escape }}</h1>
+        {%- if section.settings.show_description and collection.description != blank -%}
+          <div class="collection-banner__description rte">{{ collection.description }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- else -%}
+  <div class="collection-banner">
+    <div class="container">
+      <div class="collection-banner__content">
+        <h1>{{ collection.title | escape }}</h1>
+        {%- if section.settings.show_description and collection.description != blank -%}
+          <div class="collection-banner__description rte">{{ collection.description }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Collection banner",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show collection image",
+      "default": true,
+      "info": "Recommended: 2400 x 800px. Set the image on the collection in the Shopify admin."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "Show collection description",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

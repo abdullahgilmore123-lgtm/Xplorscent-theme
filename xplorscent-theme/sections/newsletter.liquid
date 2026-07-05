@@ -1,0 +1,92 @@
+<section class="section{% if section.settings.background == 'inverse' %} color-inverse{% elsif section.settings.background == 'surface' %} color-surface{% endif %}">
+  <div class="container">
+    <div class="newsletter reveal">
+      <div class="newsletter__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2>{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <p class="section__subheading">{{ section.settings.text | escape }}</p>
+        {%- endif -%}
+
+        {%- form 'customer', class: 'newsletter__form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          {%- if form.errors -%}
+            <p class="form__message form__message--error" role="alert">
+              {% render 'icon', icon: 'error', size: 16 %}
+              {{ form.errors.translated_fields.email }} {{ form.errors.messages.email }}
+            </p>
+          {%- endif -%}
+          {%- if form.posted_successfully? -%}
+            <p class="form__message form__message--success" role="status">
+              {% render 'icon', icon: 'success', size: 16 %}
+              {{ 'general.newsletter.success' | t }}
+            </p>
+          {%- else -%}
+            <div class="newsletter__field">
+              <input
+                type="email"
+                name="contact[email]"
+                id="NewsletterEmail-{{ section.id }}"
+                class="newsletter__input"
+                value="{{ form.email }}"
+                required
+                autocomplete="email"
+                placeholder="{{ 'general.newsletter.email_placeholder' | t }}"
+                aria-label="{{ 'general.newsletter.email_placeholder' | t }}"
+              >
+              <button type="submit" class="newsletter__submit" name="commit">
+                {{ 'general.newsletter.submit' | t }}
+              </button>
+            </div>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Newsletter"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Join the exploration"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Be first to discover new fragrances, private launches and stories from the atelier."
+    },
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Background",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "surface", "label": "Soft beige" },
+        { "value": "inverse", "label": "Charcoal" }
+      ],
+      "default": "inverse"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter"
+    }
+  ]
+}
+{% endschema %}

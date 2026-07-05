@@ -1,0 +1,38 @@
+{% comment %}
+  Renders a quantity input with stepper buttons.
+
+  Accepts:
+  - id: {String} Unique input id (required)
+  - name: {String} Input name, defaults to 'quantity'
+  - value: {Number} Defaults to 1
+  - min: {Number} Defaults to 1
+  - label: {String} Accessible label context (e.g. product title)
+  - data_index: {Number} Cart line index (optional, for cart updates)
+{% endcomment %}
+
+{%- liquid
+  assign qty_name = name | default: 'quantity'
+  assign qty_value = value | default: 1
+  assign qty_min = min | default: 1
+-%}
+
+<quantity-input class="quantity">
+  <button type="button" class="quantity__button" name="minus" aria-label="{{ 'products.product.quantity.decrease' | t: product: label | escape }}">
+    {% render 'icon', icon: 'minus', size: 14 %}
+  </button>
+  <input
+    class="quantity__input"
+    type="number"
+    id="{{ id }}"
+    name="{{ qty_name }}"
+    value="{{ qty_value }}"
+    min="{{ qty_min }}"
+    inputmode="numeric"
+    autocomplete="off"
+    aria-label="{{ 'products.product.quantity.label' | t }}"
+    {% if data_index %}data-index="{{ data_index }}"{% endif %}
+  >
+  <button type="button" class="quantity__button" name="plus" aria-label="{{ 'products.product.quantity.increase' | t: product: label | escape }}">
+    {% render 'icon', icon: 'plus', size: 14 %}
+  </button>
+</quantity-input>

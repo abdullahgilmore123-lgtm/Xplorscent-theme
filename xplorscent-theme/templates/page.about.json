@@ -1,0 +1,91 @@
+{
+  "sections": {
+    "intro": {
+      "type": "rich-text",
+      "blocks": {
+        "eyebrow": { "type": "eyebrow", "settings": { "text": "The house" } },
+        "heading": {
+          "type": "heading",
+          "settings": { "heading": "Born in Dubai. Composed in the French tradition.", "size": "h1" }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>XplorScent exists to make fine fragrance an everyday pleasure. Our debut collection captures the mysterious allure of the Middle East with the elegance of French artistry.</p>"
+          }
+        }
+      },
+      "block_order": ["eyebrow", "heading", "text"],
+      "settings": { "alignment": "center", "background": "default" }
+    },
+    "founder": {
+      "type": "image-with-text",
+      "blocks": {
+        "eyebrow": { "type": "eyebrow", "settings": { "text": "The founder" } },
+        "heading": { "type": "heading", "settings": { "heading": "A lifelong obsession with scent" } },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Founded by Nadim Razaq, a lifelong fragrance enthusiast who left a career in technology to follow his passion for perfumery, XplorScent blends two great traditions into something entirely its own.</p>"
+          }
+        }
+      },
+      "block_order": ["eyebrow", "heading", "text"],
+      "settings": { "image_ratio": "portrait", "layout": "image_first", "background": "default" }
+    },
+    "craft": {
+      "type": "image-with-text",
+      "blocks": {
+        "eyebrow": { "type": "eyebrow", "settings": { "text": "The craft" } },
+        "heading": { "type": "heading", "settings": { "heading": "Rare oud, bright citrus, refined florals" } },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Each eau de parfum is composed at high concentration for lasting wear — built around note pyramids that reveal themselves through the day, from the first spark of bergamot to the final trace of oud wood.</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": { "button_label": "Explore the collection", "button_link": "shopify://collections/all", "style": "link" }
+        }
+      },
+      "block_order": ["eyebrow", "heading", "text", "button"],
+      "settings": { "image_ratio": "portrait", "layout": "text_first", "background": "surface" }
+    },
+    "values": {
+      "type": "multicolumn",
+      "blocks": {
+        "v1": {
+          "type": "column",
+          "settings": { "icon": "droplet", "title": "Craftsmanship", "text": "<p>Small-batch compositions, made with patience in Dubai.</p>" }
+        },
+        "v2": {
+          "type": "column",
+          "settings": { "icon": "leaf", "title": "Honest luxury", "text": "<p>Premium ingredients, fair prices — luxury within reach.</p>" }
+        },
+        "v3": {
+          "type": "column",
+          "settings": { "icon": "star", "title": "Recognition", "text": "<p>Awarded Best Dubai Fragrance 2024.</p>" }
+        }
+      },
+      "block_order": ["v1", "v2", "v3"],
+      "settings": {
+        "eyebrow": "What we believe",
+        "heading": "Our values",
+        "columns_desktop": 3,
+        "center_content": true,
+        "background": "default"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Newsletter",
+        "heading": "Join the exploration",
+        "text": "Be first to discover new fragrances, private launches and stories from the atelier.",
+        "background": "inverse"
+      }
+    }
+  },
+  "order": ["intro", "founder", "craft", "values", "newsletter"]
+}

@@ -1,0 +1,92 @@
+{% layout none %}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    {%- assign gift_card_value = gift_card.initial_value | money -%}
+    <title>{{ 'gift_cards.issued.title' | t: value: gift_card_value, shop: shop.name }}</title>
+    {% style %}
+      {{ settings.type_body_font | font_face: font_display: 'swap' }}
+      {{ settings.type_heading_font | font_face: font_display: 'swap' }}
+      body {
+        margin: 0;
+        font-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+        background: #fdfcfa;
+        color: #1c1b19;
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        text-align: center;
+      }
+      .gift-card {
+        max-width: 28rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        align-items: center;
+      }
+      h1 {
+        font-family: {{ settings.type_heading_font.family }}, {{ settings.type_heading_font.fallback_families }};
+        font-weight: {{ settings.type_heading_font.weight }};
+        font-size: 1.8rem;
+        margin: 0;
+      }
+      .gift-card__amount { font-size: 2.4rem; font-weight: 600; }
+      .gift-card__code {
+        font-size: 1.1rem;
+        letter-spacing: 0.2em;
+        padding: 0.9rem 1.4rem;
+        border: 1px dashed rgba(28, 27, 25, 0.4);
+        border-radius: 6px;
+        user-select: all;
+      }
+      .gift-card__qr { margin-top: 0.5rem; }
+      a.button {
+        display: inline-block;
+        padding: 0.9rem 2rem;
+        background: #1c1b19;
+        color: #fdfcfa;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 0.8rem;
+        border-radius: 4px;
+      }
+      .expired { color: #a94434; }
+    {% endstyle %}
+  </head>
+  <body>
+    <div class="gift-card">
+      <p>{{ shop.name }}</p>
+      <h1>{{ 'gift_cards.issued.subtext' | t }}</h1>
+      <p class="gift-card__amount">{{ gift_card.initial_value | money }}</p>
+      {%- if gift_card.enabled == false or gift_card.expired -%}
+        <p class="expired">{{ 'gift_cards.issued.expired' | t }}</p>
+      {%- endif -%}
+      {%- if gift_card.balance != gift_card.initial_value -%}
+        {%- assign gift_card_balance = gift_card.balance | money -%}
+        <p>{{ 'gift_cards.issued.remaining_html' | t: balance: gift_card_balance }}</p>
+      {%- endif -%}
+      <p class="gift-card__code">{{ gift_card.code | format_code }}</p>
+      <div class="gift-card__qr" data-identifier="{{ gift_card.qr_identifier }}"></div>
+      <a class="button" href="{{ shop.url }}">{{ 'gift_cards.issued.shop_link' | t }}</a>
+    </div>
+    <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', function () {
+        var qr = document.querySelector('[data-identifier]');
+        if (window.QRCode && qr) {
+          new QRCode(qr, {
+            text: 'shopify:/' + '/' + 'open_gift_card?gift_card_id={{ gift_card.qr_identifier }}',
+            width: 120,
+            height: 120
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

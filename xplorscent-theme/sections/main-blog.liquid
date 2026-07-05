@@ -1,0 +1,57 @@
+<section class="section">
+  <div class="container">
+    <div class="section__header section__header--center">
+      <h1>{{ blog.title | escape }}</h1>
+    </div>
+
+    {%- paginate blog.articles by 9 -%}
+      <div class="grid blog-grid" role="list">
+        {%- for article in blog.articles -%}
+          <article class="article-card" role="listitem">
+            {%- if article.image -%}
+              <a href="{{ article.url }}" class="article-card__media media media--landscape" tabindex="-1" aria-hidden="true">
+                {{
+                  article.image
+                  | image_url: width: 900
+                  | image_tag: widths: '450, 700, 900', sizes: '(min-width: 990px) 33vw, 100vw', loading: 'lazy', alt: article.image.alt
+                }}
+              </a>
+            {%- endif -%}
+            <p class="caption">
+              {{ article.published_at | time_tag: format: 'date' }}
+              {%- if section.settings.show_author %} · {{ article.author }}{% endif -%}
+            </p>
+            <h2 class="article-card__title h4"><a href="{{ article.url }}">{{ article.title | escape }}</a></h2>
+            {%- if section.settings.show_excerpt and article.excerpt_or_content != blank -%}
+              <p class="article-card__excerpt">{{ article.excerpt_or_content | strip_html | truncate: 140 }}</p>
+            {%- endif -%}
+          </article>
+        {%- else -%}
+          <p class="section__subheading">{{ 'sections.main_blog.empty' | t }}</p>
+        {%- endfor -%}
+      </div>
+
+      {% render 'pagination', paginate: paginate %}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blog posts",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "Show excerpt",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "label": "Show author",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

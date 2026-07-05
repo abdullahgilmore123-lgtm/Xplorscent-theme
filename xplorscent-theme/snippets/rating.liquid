@@ -1,0 +1,30 @@
+{% comment %}
+  Renders product rating stars from the standard `reviews.rating` /
+  `reviews.rating_count` metafields (populated by most review apps).
+
+  Accepts:
+  - product: {Object} Product (required)
+  - show_count: {Boolean} Show the review count next to the stars
+{% endcomment %}
+
+{%- if product.metafields.reviews.rating.value != blank -%}
+  {%- liquid
+    assign rating_value = product.metafields.reviews.rating.value.rating | round: 1
+    assign rating_count = product.metafields.reviews.rating_count.value | default: 0
+    assign rating_rounded = rating_value | round
+  -%}
+  <div class="rating" role="img" aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: rating_value, rating_max: 5 }}">
+    <span aria-hidden="true" class="rating__stars">
+      {%- for i in (1..5) -%}
+        {%- if i <= rating_rounded -%}
+          {% render 'icon', icon: 'star-filled', size: 14 %}
+        {%- else -%}
+          {% render 'icon', icon: 'star', size: 14 %}
+        {%- endif -%}
+      {%- endfor -%}
+    </span>
+    {%- if show_count and rating_count > 0 -%}
+      <span class="rating__count">({{ rating_count }})</span>
+    {%- endif -%}
+  </div>
+{%- endif -%}

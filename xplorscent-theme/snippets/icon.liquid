@@ -1,0 +1,98 @@
+{% comment %}
+  Renders an inline outline icon.
+
+  Accepts:
+  - icon: {String} Icon name (required)
+  - size: {Number} Pixel size, defaults to 20
+
+  Usage:
+  {% render 'icon', icon: 'bag', size: 22 %}
+{% endcomment %}
+
+{%- liquid
+  assign size = size | default: 20
+-%}
+<svg
+  class="icon icon-{{ icon }}"
+  width="{{ size }}"
+  height="{{ size }}"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+>
+  {%- case icon -%}
+    {%- when 'bag' -%}
+      <path d="M6 8h12l1 13H5L6 8Z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/>
+    {%- when 'search' -%}
+      <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+    {%- when 'menu' -%}
+      <path d="M4 7h16M4 12h16M4 17h16"/>
+    {%- when 'close' -%}
+      <path d="m6 6 12 12M18 6 6 18"/>
+    {%- when 'chevron-down' -%}
+      <path d="m6 9 6 6 6-6"/>
+    {%- when 'chevron-up' -%}
+      <path d="m6 15 6-6 6 6"/>
+    {%- when 'chevron-left' -%}
+      <path d="m15 6-6 6 6 6"/>
+    {%- when 'chevron-right' -%}
+      <path d="m9 6 6 6-6 6"/>
+    {%- when 'arrow-right' -%}
+      <path d="M4 12h16m-6-6 6 6-6 6"/>
+    {%- when 'account' -%}
+      <circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/>
+    {%- when 'plus' -%}
+      <path d="M12 5v14M5 12h14"/>
+    {%- when 'minus' -%}
+      <path d="M5 12h14"/>
+    {%- when 'trash' -%}
+      <path d="M4 7h16M10 11v6M14 11v6M6 7l1 14h10l1-14M9 7V4h6v3"/>
+    {%- when 'star' -%}
+      <path d="m12 3 2.7 5.8 6.3.8-4.6 4.4 1.2 6.3L12 17.2 6.4 20.3l1.2-6.3L3 9.6l6.3-.8L12 3Z"/>
+    {%- when 'star-filled' -%}
+      <path fill="currentColor" stroke="none" d="m12 3 2.7 5.8 6.3.8-4.6 4.4 1.2 6.3L12 17.2 6.4 20.3l1.2-6.3L3 9.6l6.3-.8L12 3Z"/>
+    {%- when 'check' -%}
+      <path d="m5 13 4 4L19 7"/>
+    {%- when 'truck' -%}
+      <path d="M2 6h12v11H2zM14 10h4l3 3v4h-7"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>
+    {%- when 'returns' -%}
+      <path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/>
+    {%- when 'shield' -%}
+      <path d="M12 3 5 6v5c0 5 3 8.4 7 10 4-1.6 7-5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4.5"/>
+    {%- when 'droplet' -%}
+      <path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/>
+    {%- when 'leaf' -%}
+      <path d="M5 19C5 9 12 4 20 4c0 8-4 15-13 15"/><path d="M5 19c2-5 5-8 9-10"/>
+    {%- when 'gift' -%}
+      <path d="M4 9h16v3H4zM6 12v9h12v-9M12 9v12"/><path d="M12 9C9 9 7 7.8 7 6a2 2 0 0 1 4-.6c.4 1 .8 2.3 1 3.6.2-1.3.6-2.6 1-3.6A2 2 0 0 1 17 6c0 1.8-2 3-5 3Z"/>
+    {%- when 'filter' -%}
+      <path d="M4 6h16M7 12h10M10 18h4"/>
+    {%- when 'email' -%}
+      <rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/>
+    {%- when 'phone' -%}
+      <path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2Z"/>
+    {%- when 'pin' -%}
+      <path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/>
+    {%- when 'error' -%}
+      <circle cx="12" cy="12" r="9"/><path d="M12 7.5V13m0 3.5v.01"/>
+    {%- when 'success' -%}
+      <circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/>
+    {%- when 'instagram' -%}
+      <rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.5" fill="currentColor"/>
+    {%- when 'facebook' -%}
+      <path d="M14 8h3V4.5h-3A3.5 3.5 0 0 0 10.5 8v2.5H8V14h2.5v6.5H14V14h2.6l.4-3.5h-3V8.5A.5.5 0 0 1 14 8Z"/>
+    {%- when 'tiktok' -%}
+      <path d="M15 4c.4 2.6 2 4.2 4.5 4.5V12c-1.8 0-3.3-.6-4.5-1.5v5.7A5.3 5.3 0 1 1 9.7 11v3.2a2.2 2.2 0 1 0 2.3 2.2V4H15Z"/>
+    {%- when 'twitter' -%}
+      <path d="m4 4 7 9.3L4.4 20h2.3l5.3-5.4L16 20h4l-7.3-9.7L19.3 4H17l-4.8 5L8 4H4Z"/>
+    {%- when 'youtube' -%}
+      <rect x="3" y="6" width="18" height="12" rx="3"/><path d="m10.5 9.5 5 2.5-5 2.5v-5Z"/>
+    {%- when 'pinterest' -%}
+      <circle cx="12" cy="12" r="9"/><path d="M11 8.5c-1.4.6-2 2-1.6 3.4M12.7 8c1.8.4 2.5 2.2 1.8 4-.6 1.7-2.2 2.5-3.5 2L9.5 19"/>
+  {%- endcase -%}
+</svg>

@@ -1,0 +1,73 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": { "type": "vendor", "settings": {} },
+        "title": { "type": "title", "settings": {} },
+        "rating": { "type": "rating", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "variant_picker": { "type": "variant_picker", "settings": {} },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": { "show_quantity": true, "show_dynamic_checkout": false }
+        },
+        "trust": {
+          "type": "trust",
+          "settings": {
+            "item_1": "Free shipping over $75",
+            "item_2": "30-day returns",
+            "item_3": "Secure checkout"
+          }
+        },
+        "description": { "type": "description", "settings": {} },
+        "scent_notes": {
+          "type": "scent_notes",
+          "settings": { "top_notes": "", "heart_notes": "", "base_notes": "" }
+        },
+        "shipping": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Shipping & delivery",
+            "content": "<p>Orders ship within 1–2 business days with tracked delivery. Complimentary shipping on orders over $75.</p>"
+          }
+        },
+        "returns": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Returns & exchanges",
+            "content": "<p>Changed your mind? Unopened items can be returned within 30 days of delivery for a full refund.</p>"
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": { "heading": "Pairs well with", "limit": 2 }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "rating",
+        "price",
+        "variant_picker",
+        "buy_buttons",
+        "trust",
+        "description",
+        "scent_notes",
+        "shipping",
+        "returns",
+        "complementary"
+      ],
+      "settings": { "enable_sticky_atc": true }
+    },
+    "related": {
+      "type": "related-products",
+      "settings": { "heading": "Continue exploring", "products_to_show": 4 }
+    },
+    "recently_viewed": {
+      "type": "recently-viewed",
+      "settings": { "heading": "Recently viewed", "products_to_show": 4 }
+    }
+  },
+  "order": ["main", "related", "recently_viewed"]
+}
