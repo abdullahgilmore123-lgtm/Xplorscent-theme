@@ -2,6 +2,30 @@
 
 All notable changes and the design decisions behind them.
 
+## [1.1.0] — 2026-07-06
+
+Catalog integration release: the theme now ships with the live Xplor Scent catalog and
+the two remaining feature gaps closed.
+
+### Added
+- **Predictive search** — debounced live suggestions (products with thumbnails/prices,
+  collections, pages) in the search drawer via the Shopify Predictive Search API +
+  Section Rendering; keyboard-accessible, aria-live announced, zero dependencies.
+- **Instagram section** — editor-managed 6-tile post grid with hover overlay and
+  profile link; no embeds, no API tokens. Added to the homepage before the newsletter.
+- **`setup/` folder** — `products.csv` with all 14 products currently sold on
+  xplorscent.com (5 eaux de parfum, 4 hair & body mists, 4 mist & fragrance sets, the
+  Discovery Spray Set): researched descriptions, scent-pyramid metafields sourced from
+  the live product pages and Fragrantica, SEO titles/descriptions, tags, and handles
+  matching the live URLs to preserve SEO equity. `STORE_SETUP.md` documents collections,
+  navigation, pages, metafield definitions and app wiring. Prices and images are left
+  to the store owner by design (not publicly verifiable / rights stay with the owner).
+
+### Changed
+- Homepage scent finder now reflects the real catalog's four families:
+  Oud & Spicy, Citrus & Aromatic, Fruity & Vibrant, Floral & Woody.
+- README install steps cover the setup folder and zip exclusions.
+
 ## [1.0.0] — 2026-07-05
 
 Initial release: a complete, dependency-free Shopify Online Store 2.0 theme built

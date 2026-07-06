@@ -160,21 +160,26 @@
   <div class="drawer__overlay" data-drawer-close></div>
   <div class="search-drawer__panel" role="dialog" aria-modal="true" aria-label="{{ 'general.search.search' | t }}">
     <div class="container">
-      <form action="{{ routes.search_url }}" method="get" role="search" class="search-drawer__form">
-        {% render 'icon', icon: 'search', size: 20 %}
-        <input
-          type="search"
-          name="q"
-          class="search-drawer__input"
-          placeholder="{{ 'general.search.placeholder' | t }}"
-          aria-label="{{ 'general.search.search' | t }}"
-          data-drawer-autofocus
-        >
-        <input type="hidden" name="options[prefix]" value="last">
-        <button type="button" class="icon-button" data-drawer-close aria-label="{{ 'accessibility.close' | t }}">
-          {% render 'icon', icon: 'close', size: 20 %}
-        </button>
-      </form>
+      <predictive-search>
+        <form action="{{ routes.search_url }}" method="get" role="search" class="search-drawer__form">
+          {% render 'icon', icon: 'search', size: 20 %}
+          <input
+            type="search"
+            name="q"
+            class="search-drawer__input"
+            placeholder="{{ 'general.search.placeholder' | t }}"
+            aria-label="{{ 'general.search.search' | t }}"
+            autocomplete="off"
+            data-drawer-autofocus
+            data-predictive-input
+          >
+          <input type="hidden" name="options[prefix]" value="last">
+          <button type="button" class="icon-button" data-drawer-close aria-label="{{ 'accessibility.close' | t }}">
+            {% render 'icon', icon: 'close', size: 20 %}
+          </button>
+        </form>
+        <div class="predictive-search" data-predictive-results aria-live="polite" role="status"></div>
+      </predictive-search>
       {%- if section.settings.search_menu != blank -%}
         <div class="search-drawer__links">
           <span class="caption">{{ 'general.search.popular' | t }}</span>

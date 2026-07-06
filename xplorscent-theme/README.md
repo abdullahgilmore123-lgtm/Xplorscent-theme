@@ -19,10 +19,14 @@ The theme has no build step — the folder *is* the theme.
    `snippets/`, `assets/`, `config/`, `locales/` must be at the **root** of the zip):
    ```sh
    cd xplorscent-theme
-   zip -r ../xplorscent-theme.zip . -x '*.md' -x '.git*'
+   zip -r ../xplorscent-theme.zip . -x '*.md' -x '.git*' -x 'setup/*'
    ```
 2. In Shopify admin: **Online Store → Themes → Add theme → Upload zip file.**
 3. Preview, then **Publish** when ready.
+4. Then follow **`setup/STORE_SETUP.md`** — it contains a ready-to-import
+   `products.csv` with all 14 live Xplor Scent products (real descriptions, scent-note
+   metafields, SEO titles/descriptions, handles matching your live URLs), plus the
+   collections, menus, pages and app wiring that make every theme feature light up.
 
 ### First 30 minutes after install
 
@@ -67,6 +71,10 @@ The theme has no build step — the folder *is* the theme.
   Review apps can also inject their full widget via the product page's app block slot.
 - Storefront filtering & sorting on collections and search (Search & Discovery app
   controls which filters appear).
+- **Predictive search**: live product/collection/page suggestions with thumbnails and
+  prices as you type in the search drawer (Shopify Predictive Search API, no apps).
+- **Instagram section**: editor-managed post grid linking to your profile — zero
+  third-party scripts, no API keys to expire.
 
 ### Performance
 - Single CSS file, single small JS file (+1 product-page file, loaded only there).
@@ -132,7 +140,8 @@ xplorscent-theme/
 ├── snippets/        product-card, price, rating, facets, icons, pagination, …
 ├── assets/          base.css, theme.js, product.js
 ├── config/          settings_schema.json, settings_data.json
-└── locales/         en.default.json (all storefront strings, fully translatable)
+├── locales/         en.default.json (all storefront strings, fully translatable)
+└── setup/           products.csv + STORE_SETUP.md (store data — exclude from theme zip)
 ```
 
 ## 6. Development notes

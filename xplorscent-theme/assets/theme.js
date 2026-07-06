@@ -334,6 +334,47 @@
     document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-revealed'));
   }
 
+  /* Predictive search ------------------------------------------------------------ */
+
+  class PredictiveSearch extends HTMLElement {
+    connectedCallback() {
+      this.input = this.querySelector('[data-predictive-input]');
+      this.results = this.querySelector('[data-predictive-results]');
+      if (!this.input || !this.results) return;
+      this.abortController = null;
+      this.debounce = null;
+      this.input.addEventListener('input', () => {
+        window.clearTimeout(this.debounce);
+        this.debounce = window.setTimeout(() => this.search(), 250);
+      });
+    }
+
+    async search() {
+      const query = this.input.value.trim();
+      if (this.abortController) this.abortController.abort();
+      if (query.length < 2) {
+        this.results.innerHTML = '';
+        return;
+      }
+      this.abortController = new AbortController();
+      const url =
+        `${window.theme.routes.predictiveSearch}?q=${encodeURIComponent(query)}` +
+        '&resources[type]=product,collection,page&resources[limit]=6&section_id=predictive-search';
+      try {
+        const response = await fetch(url, { signal: this.abortController.signal });
+        if (!response.ok) throw new Error(response.status);
+        const text = await response.text();
+        const doc = new DOMParser().parseFromString(text, 'text/html');
+        const fresh = doc.querySelector('#predictive-search-results');
+        this.results.innerHTML = fresh ? fresh.outerHTML : '';
+      } catch (error) {
+        if (error.name !== 'AbortError') this.results.innerHTML = '';
+      }
+    }
+  }
+
+  customElements.define('predictive-search', PredictiveSearch);
+
   /* Recently viewed ------------------------------------------------------------- */
 
   class RecentlyViewed extends HTMLElement {
