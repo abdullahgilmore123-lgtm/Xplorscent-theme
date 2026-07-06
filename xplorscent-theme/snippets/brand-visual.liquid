@@ -1,0 +1,44 @@
+{% comment %}
+  Renders an on-brand SVG visual from the theme assets. Used ONLY as a fallback
+  when no dynamic image (product media, collection image, section setting) exists —
+  real Shopify images always take priority in the calling sections.
+
+  Accepts:
+  - kind: {String} 'bottle' | 'family' | 'square' | 'wide' | 'hero' (required)
+  - index: {Number} Used to cycle variants deterministically (optional, default 1)
+  - loading: {String} 'lazy' (default) or 'eager' for above-the-fold slots
+
+  Variants: bottle 1-5, square 1-3, family cycles oud/citrus/fruity/floral.
+{% endcomment %}
+
+{%- liquid
+  assign idx = index | default: 1
+  assign loading_attr = loading | default: 'lazy'
+  case kind
+    when 'bottle'
+      assign variant = idx | modulo: 5 | plus: 1
+      assign file = 'xs-visual-bottle-' | append: variant | append: '.svg'
+      assign w = 1200
+      assign h = 1500
+    when 'square'
+      assign variant = idx | modulo: 3 | plus: 1
+      assign file = 'xs-visual-square-' | append: variant | append: '.svg'
+      assign w = 1200
+      assign h = 1200
+    when 'family'
+      assign families = 'oud,citrus,fruity,floral' | split: ','
+      assign variant = idx | modulo: 4
+      assign file = 'xs-family-' | append: families[variant] | append: '.svg'
+      assign w = 800
+      assign h = 1060
+    when 'hero'
+      assign file = 'xs-visual-hero.svg'
+      assign w = 2400
+      assign h = 1350
+    else
+      assign file = 'xs-visual-wide.svg'
+      assign w = 1800
+      assign h = 1200
+  endcase
+-%}
+<img src="{{ file | asset_url }}" alt="" width="{{ w }}" height="{{ h }}" loading="{{ loading_attr }}" class="brand-visual" aria-hidden="true">

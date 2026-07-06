@@ -27,13 +27,9 @@
       {%- else -%}
         {%- for i in (1..products_to_show) -%}
           <div role="listitem">
-            {%- liquid
-              assign ph_index = forloop.index0 | modulo: 6 | plus: 1
-              assign ph_name = 'product-' | append: ph_index
-            -%}
             <article class="product-card">
               <div class="product-card__media media media--portrait">
-                <div class="media__placeholder">{{ ph_name | placeholder_svg_tag: 'placeholder-svg' }}</div>
+                {% render 'brand-visual', kind: 'bottle', index: forloop.index0 %}
               </div>
               <div class="product-card__info">
                 <h3 class="product-card__title">{{ 'onboarding.product_title' | t }}</h3>

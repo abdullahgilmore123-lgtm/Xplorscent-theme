@@ -2,6 +2,29 @@
 
 All notable changes and the design decisions behind them.
 
+## [1.3.0] — 2026-07-06
+
+Visual-fallback release: the theme now previews as a finished boutique with zero grey
+placeholders and zero empty image containers, while every image slot remains fully
+dynamic — Shopify product media, collection images, and section settings always take
+priority the moment they exist.
+
+### Added
+- **14 on-brand SVG visuals** (`assets/xs-visual-*.svg`, `assets/xs-family-*.svg`,
+  1–2 KB each): five tinted bottle compositions (incl. a discovery-trio), a dusk-atelier
+  hero scene, four scent-family ingredient artworks (oud smoke, citrus wheel, orchard
+  fruit, blossom), three square lifestyle motifs, and a wide collection composition —
+  all generated in the theme palette with grain texture.
+- **`snippets/brand-visual.liquid`** — central renderer that cycles variants
+  deterministically (e.g. by product id) with correct width/height and lazy/eager control.
+
+### Changed
+- Every `placeholder_svg_tag` usage removed (product cards, product gallery, hero,
+  image-with-text, collection cards, list-collections, featured-collection onboarding,
+  Instagram tiles) in favor of the brand visuals.
+- Scent-finder cards and cart line items can no longer render empty image containers.
+- Dead placeholder CSS removed; `.brand-visual` cover rule added.
+
 ## [1.2.0] — 2026-07-06
 
 Content-sync release from the approved research phase (see repository-root

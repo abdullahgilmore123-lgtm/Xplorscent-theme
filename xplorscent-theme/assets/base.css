@@ -355,7 +355,7 @@ select {
   background: rgb(var(--color-surface));
   border-radius: var(--radius-card);
 }
-.media > img, .media > svg, .media .placeholder-svg {
+.media > img, .media > svg {
   position: absolute;
   inset: 0;
   width: 100%; height: 100%;
@@ -367,7 +367,8 @@ select {
 .media--adapt { padding-bottom: 0; }
 .media--adapt > img { position: static; height: auto; }
 
-.placeholder-svg { fill: rgba(var(--color-foreground), 0.25); background: rgb(var(--color-surface)); }
+/* On-brand SVG visuals used as fallbacks until real imagery is assigned */
+.brand-visual { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
 .progress-bar {
   width: 100%;

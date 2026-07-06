@@ -16,7 +16,7 @@
                   | image_tag: widths: '450, 700, 900', sizes: '(min-width: 750px) 33vw, 100vw', loading: 'lazy', alt: collection.featured_image.alt
                 }}
               {%- else -%}
-                <div class="media__placeholder">{{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+                {% render 'brand-visual', kind: 'wide', index: forloop.index0 %}
               {%- endif -%}
             </div>
             <div class="collection-card__content">

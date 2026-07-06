@@ -64,6 +64,8 @@
             <a href="{{ item.url }}" class="cart-item__media" tabindex="-1" aria-hidden="true">
               {%- if item.image -%}
                 {{ item.image | image_url: width: 240 | image_tag: widths: '120, 240', sizes: '80px', loading: 'lazy', alt: item.image.alt }}
+              {%- else -%}
+                {% render 'brand-visual', kind: 'bottle', index: item.product_id %}
               {%- endif -%}
             </a>
             <div class="cart-item__details">

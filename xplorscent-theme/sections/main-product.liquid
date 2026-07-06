@@ -29,7 +29,7 @@
             </div>
           {%- else -%}
             <div class="product__media-item">
-              <div class="media">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+              <div class="media">{% render 'brand-visual', kind: 'bottle', index: 0, loading: 'eager' %}</div>
             </div>
           {%- endfor -%}
         </div>

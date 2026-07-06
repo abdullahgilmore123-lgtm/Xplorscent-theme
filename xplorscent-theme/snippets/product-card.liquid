@@ -47,7 +47,7 @@
           }}
         {%- endif -%}
       {%- else -%}
-        <div class="media__placeholder">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+        {% render 'brand-visual', kind: 'bottle', index: card_product.id %}
       {%- endif -%}
 
       {%- if card_product.available == false -%}

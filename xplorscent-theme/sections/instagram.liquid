@@ -49,7 +49,7 @@
               | image_tag: widths: '300, 500, 800', sizes: '(min-width: 990px) 16vw, (min-width: 750px) 33vw, 50vw', loading: 'lazy', alt: block.settings.image.alt
             }}
           {%- else -%}
-            <div class="media__placeholder">{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+            {% render 'brand-visual', kind: 'square', index: forloop.index0 %}
           {%- endif -%}
           <span class="instagram-grid__overlay">
             {% render 'icon', icon: 'instagram', size: 22 %}
