@@ -73,6 +73,28 @@
         </div>
 
         <aside class="cart-page__summary" aria-label="{{ 'sections.cart.summary' | t }}">
+          {%- if section.settings.show_shipping_bar and section.settings.shipping_bar_threshold > 0 -%}
+            {%- liquid
+              assign threshold = section.settings.shipping_bar_threshold | times: 100
+              assign remaining = threshold | minus: cart.total_price
+              assign remaining_money = remaining | money
+              assign progress = cart.total_price | times: 100.0 | divided_by: threshold | at_most: 100
+            -%}
+            <div aria-live="polite">
+              {%- if remaining > 0 -%}
+                <p class="caption">{{ 'sections.cart.shipping_bar.remaining_html' | t: amount: remaining_money }}</p>
+              {%- else -%}
+                <p class="caption cart-drawer__shipping-unlocked">
+                  {% render 'icon', icon: 'check', size: 14 %}
+                  {{ 'sections.cart.shipping_bar.unlocked' | t }}
+                </p>
+              {%- endif -%}
+              <div class="progress-bar" role="progressbar" aria-valuenow="{{ progress | round }}" aria-valuemin="0" aria-valuemax="100">
+                <span class="progress-bar__fill" style="width: {{ progress }}%"></span>
+              </div>
+            </div>
+          {%- endif -%}
+
           {%- if section.settings.show_note -%}
             <details class="cart-drawer__note">
               <summary class="caption">{{ 'sections.cart.note' | t }}</summary>
@@ -94,6 +116,17 @@
           <button type="submit" name="checkout" class="button button--full">
             {{ 'sections.cart.checkout' | t }}
           </button>
+
+          <div class="cart-page__trust">
+            <span class="product__trust-item">
+              {% render 'icon', icon: 'shield', size: 16 %}
+              {{ 'sections.cart.secure_checkout' | t }}
+            </span>
+            <span class="product__trust-item">
+              {% render 'icon', icon: 'truck', size: 16 %}
+              {{ 'sections.cart.tracked_shipping' | t }}
+            </span>
+          </div>
         </aside>
       </form>
     {%- endif -%}
@@ -109,6 +142,22 @@
       "id": "show_note",
       "label": "Show order note",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shipping_bar",
+      "label": "Show free shipping progress bar",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "shipping_bar_threshold",
+      "label": "Free shipping threshold",
+      "info": "In your store currency. Keep in sync with the cart drawer setting.",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "default": 75
     }
   ]
 }

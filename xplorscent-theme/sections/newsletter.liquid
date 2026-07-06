@@ -44,6 +44,10 @@
             </div>
           {%- endif -%}
         {%- endform -%}
+
+        {%- if section.settings.fine_print != blank -%}
+          <p class="newsletter__fine-print caption">{{ section.settings.fine_print | escape }}</p>
+        {%- endif -%}
       </div>
     </div>
   </div>
@@ -70,6 +74,13 @@
       "id": "text",
       "label": "Text",
       "default": "Be first to discover new fragrances, private launches and stories from the atelier."
+    },
+    {
+      "type": "text",
+      "id": "fine_print",
+      "label": "Fine print",
+      "default": "No noise — one considered letter at a time. Unsubscribe whenever you like.",
+      "info": "Small line under the form."
     },
     {
       "type": "select",

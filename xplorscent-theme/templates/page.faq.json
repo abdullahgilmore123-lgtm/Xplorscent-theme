@@ -1,6 +1,6 @@
 {
   "sections": {
-    "main": {
+    "fragrance_faq": {
       "type": "faq",
       "blocks": {
         "q1": {
@@ -10,42 +10,28 @@
             "answer": "<p>Our eaux de parfum are composed at a high concentration for long wear — up to 12 hours depending on the scent and your skin type. Apply to pulse points and moisturized skin for best results.</p>"
           }
         },
-        "q0": {
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Are your fragrances unisex?",
+            "answer": "<p>Yes — every XplorScent composition is designed to be worn by anyone. We build scents around character and mood, not categories.</p>"
+          }
+        },
+        "q3": {
           "type": "question",
           "settings": {
             "question": "Do you offer samples or testers?",
             "answer": "<p>Yes — the <strong>Discovery Spray Set</strong> brings all five signature fragrances in 3&nbsp;mL travel sprays, so you can find your scent before committing to a full bottle.</p>"
           }
         },
-        "q2": {
-          "type": "question",
-          "settings": {
-            "question": "Are your fragrances unisex?",
-            "answer": "<p>Yes — every XplorScent composition is designed to be worn by anyone.</p>"
-          }
-        },
-        "q3": {
-          "type": "question",
-          "settings": {
-            "question": "What is the Discovery Set?",
-            "answer": "<p>Five 3&nbsp;mL miniatures of our signature fragrances — the perfect way to find your scent before committing to a full bottle.</p>"
-          }
-        },
         "q4": {
           "type": "question",
           "settings": {
-            "question": "Where do you ship?",
-            "answer": "<p>We ship worldwide with tracked delivery. Orders are dispatched within 1–2 business days.</p>"
+            "question": "What's the difference between the perfumes and the mists?",
+            "answer": "<p>The eaux de parfum carry each signature at full depth for up to 12 hours. The hair &amp; body mists are the same signatures at an airy concentration — refreshable, gentle on hair, up to 6 hours of wear. The Mist &amp; Fragrance Sets pair the two.</p>"
           }
         },
         "q5": {
-          "type": "question",
-          "settings": {
-            "question": "What is your return policy?",
-            "answer": "<p>Unopened items can be returned within 30 days of delivery for a full refund. Contact us and we'll arrange everything.</p>"
-          }
-        },
-        "q6": {
           "type": "question",
           "settings": {
             "question": "How should I store my fragrance?",
@@ -53,15 +39,65 @@
           }
         }
       },
-      "block_order": ["q1", "q2", "q0", "q3", "q4", "q5", "q6"],
+      "block_order": ["q1", "q2", "q3", "q4", "q5"],
       "settings": {
-        "eyebrow": "Help",
-        "heading": "Frequently asked questions",
+        "eyebrow": "The fragrances",
+        "heading": "About the scents",
         "open_first": true,
-        "show_contact_link": true,
+        "show_contact_link": false,
         "enable_schema": true
+      }
+    },
+    "orders_faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Where do you ship?",
+            "answer": "<p>We ship worldwide. Once your order is on its way you'll receive a confirmation email with a tracking number. Shipping costs and delivery times vary by destination.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "How quickly will my order ship?",
+            "answer": "<p>Orders are dispatched within 1–2 business days with tracked delivery.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>Unopened items can be returned within 30 days of delivery for a full refund. Write to us at support@xplorscent.com and we'll arrange everything.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Is my payment secure?",
+            "answer": "<p>Yes — checkout is handled by Shopify's encrypted payment infrastructure. We never see or store your card details.</p>"
+          }
+        }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"],
+      "settings": {
+        "eyebrow": "Orders & delivery",
+        "heading": "Shipping, returns & payment",
+        "open_first": false,
+        "show_contact_link": true,
+        "enable_schema": false
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Newsletter",
+        "heading": "Join the exploration",
+        "text": "New fragrances, private launches and stories from the atelier.",
+        "background": "surface"
       }
     }
   },
-  "order": ["main"]
+  "order": ["fragrance_faq", "orders_faq", "newsletter"]
 }

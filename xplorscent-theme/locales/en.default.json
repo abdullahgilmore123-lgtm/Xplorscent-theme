@@ -133,6 +133,8 @@
       "taxes_included": "Tax included and shipping calculated at checkout.",
       "taxes_at_checkout": "Taxes and shipping calculated at checkout.",
       "remove_title": "Remove {{ title }}",
+      "secure_checkout": "Secure checkout",
+      "tracked_shipping": "Tracked shipping worldwide",
       "error": "Something went wrong — please try again.",
       "quantity_error": "We couldn't update the quantity. Please try again.",
       "shipping_bar": {

@@ -2,6 +2,23 @@
 
 All notable changes and the design decisions behind them.
 
+## [1.5.0] — 2026-07-06
+
+Cohesion release: every remaining surface brought to the same premium standard.
+
+### Changed
+- **FAQ page** restructured into two editorial groups — "About the scents" and
+  "Shipping, returns & payment" — closing with a newsletter; single FAQPage schema.
+- **Cart page** gains the drawer's free-shipping progress meter (setting + threshold)
+  and a secure-checkout / tracked-shipping trust row under the checkout button.
+- **Policy pages** (`/policies/...`, rendered by Shopify without templates) now styled
+  to the brand: serif headings, prose measure, spacing — no more default look.
+- **404** and **search** templates route back to product with a best-sellers /
+  explore-the-collection section; **About** closes with "Meet the signatures".
+- **Newsletter** section gains an editable fine-print line ("No noise — unsubscribe
+  whenever you like").
+- **Footer wordmark** matches the header's letterspaced uppercase serif treatment.
+
 ## [1.4.0] — 2026-07-06
 
 Exclusive-pass release: a restrained elevation of the visual language plus dedicated

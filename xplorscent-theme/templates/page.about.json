@@ -77,6 +77,20 @@
         "background": "default"
       }
     },
+    "explore": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "The collection",
+        "heading": "Meet the signatures",
+        "subheading": "",
+        "center_heading": true,
+        "collection": "all",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "enable_mobile_scroll": true,
+        "background": "default"
+      }
+    },
     "newsletter": {
       "type": "newsletter",
       "settings": {
@@ -87,5 +101,5 @@
       }
     }
   },
-  "order": ["intro", "founder", "craft", "values", "newsletter"]
+  "order": ["intro", "founder", "craft", "values", "explore", "newsletter"]
 }

@@ -3,7 +3,21 @@
     "main": {
       "type": "main-search",
       "settings": { "enable_filtering": true }
+    },
+    "explore": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Not sure where to start?",
+        "heading": "Explore the collection",
+        "subheading": "",
+        "center_heading": true,
+        "collection": "all",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "enable_mobile_scroll": true,
+        "background": "surface"
+      }
     }
   },
-  "order": ["main"]
+  "order": ["main", "explore"]
 }

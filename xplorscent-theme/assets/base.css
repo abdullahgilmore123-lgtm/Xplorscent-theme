@@ -987,6 +987,7 @@ select {
 }
 .newsletter__submit:hover { opacity: 0.85; }
 .color-inverse .newsletter__submit { background: rgb(var(--color-background)); color: rgb(var(--color-foreground)); }
+.newsletter__fine-print { margin-top: 0.4rem; opacity: 0.8; }
 
 /* FAQ */
 .faq { max-width: 76rem; margin-inline: auto; }
@@ -1296,6 +1297,14 @@ select {
   flex-direction: column;
   gap: 1.6rem;
 }
+.cart-page__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  justify-content: center;
+  padding-top: 0.4rem;
+}
+.cart-page__trust .product__trust-item { font-size: 1.2rem; }
 
 /* 13. Blog & article
    ========================================================================== */
@@ -1330,7 +1339,14 @@ select {
 @media (min-width: 750px) { .footer__top { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 990px) { .footer__top { grid-template-columns: 2fr 1fr 1fr 1.5fr; } }
 .footer__brand { display: flex; flex-direction: column; gap: 1.8rem; max-width: 36rem; }
-.footer__logo { font-family: var(--font-heading); font-size: 2.2rem; letter-spacing: 0.08em; color: rgb(var(--color-background)); }
+.footer__logo {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgb(var(--color-background));
+  white-space: nowrap;
+}
 .footer__tagline { font-size: 1.5rem; line-height: 1.7; }
 .footer__charity { display: flex; align-items: center; gap: 0.8rem; color: rgba(var(--color-background), 0.7); }
 .footer__charity .icon { color: rgb(var(--color-accent)); flex-shrink: 0; }
@@ -1408,6 +1424,37 @@ select {
 
 .list-collections { grid-template-columns: 1fr; }
 @media (min-width: 750px) { .list-collections { grid-template-columns: repeat(3, 1fr); } }
+
+/* Shopify-rendered policy pages (/policies/...) — no template, styled here
+   so refund/privacy/terms/shipping pages match the brand. */
+.shopify-policy__container {
+  max-width: 76rem !important;
+  margin-inline: auto;
+  padding: clamp(4rem, 8vw, 8rem) clamp(1.6rem, 4vw, 4rem);
+}
+.shopify-policy__title {
+  text-align: left;
+  margin-bottom: 3.2rem;
+}
+.shopify-policy__title h1 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: calc(clamp(3rem, 2.6rem + 2vw, 4.8rem) * var(--heading-scale));
+}
+.shopify-policy__body {
+  color: rgba(var(--color-foreground), 0.85);
+  line-height: 1.65;
+}
+.shopify-policy__body h2, .shopify-policy__body h3 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  margin-top: 3.2rem;
+  margin-bottom: 1.2rem;
+  color: rgb(var(--color-foreground));
+}
+.shopify-policy__body p { margin-bottom: 1.6rem; }
+.shopify-policy__body a { color: rgb(var(--color-foreground)); text-underline-offset: 3px; }
+.shopify-policy__body ul, .shopify-policy__body ol { padding-left: 2rem; margin-bottom: 1.6rem; }
 
 /* 16. Motion
    ========================================================================== */
