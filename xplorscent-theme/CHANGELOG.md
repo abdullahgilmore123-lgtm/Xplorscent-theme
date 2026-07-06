@@ -2,6 +2,24 @@
 
 All notable changes and the design decisions behind them.
 
+## [1.5.1] — 2026-07-06
+
+Expert-review release: fixes found in a page-by-page pass as creative director,
+engineer, UX, SEO, accessibility and CRO reviewer.
+
+### Fixed
+- **No-JS resilience:** scroll-reveal styles are now gated behind the `html.js` class —
+  if JavaScript ever fails to load, content renders fully visible instead of staying
+  at opacity 0.
+- **Sticky add-to-cart accessibility:** the bar was permanently `aria-hidden="true"`
+  while containing a real button. It now toggles `aria-hidden` and the button's
+  tab-order with visibility, so screen-reader and keyboard users get it exactly when
+  sighted users do — and never tab into an off-screen control.
+- **Stray `aria-hidden="false"`** removed from the mobile menu drawer wrapper.
+- **Responsive:** collection toolbar wraps on narrow screens (filters no longer crowd
+  the sort control); facet dropdown panels clamp to the viewport width.
+- **Cart trigger** announces `aria-haspopup="dialog"`.
+
 ## [1.5.0] — 2026-07-06
 
 Cohesion release: every remaining surface brought to the same premium standard.

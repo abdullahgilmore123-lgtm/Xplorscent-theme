@@ -100,6 +100,7 @@
         type="button"
         class="icon-button header__cart"
         data-cart-drawer-open
+        aria-haspopup="dialog"
         aria-label="{{ 'sections.header.cart_count' | t: count: cart.item_count }}"
       >
         {% render 'icon', icon: 'bag', size: 21 %}
@@ -112,7 +113,7 @@
 </div>
 
 {%- comment -%} Mobile menu drawer {%- endcomment -%}
-<div id="MenuDrawer" class="drawer js-drawer" aria-hidden="false">
+<div id="MenuDrawer" class="drawer js-drawer">
   <div class="drawer__overlay" data-drawer-close></div>
   <div class="drawer__panel drawer__panel--left" role="dialog" aria-modal="true" aria-label="{{ 'sections.header.menu' | t }}" tabindex="-1">
     <div class="drawer__header">

@@ -140,7 +140,10 @@
 
       const observer = new IntersectionObserver(
         (entries) => {
-          this.classList.toggle('is-visible', !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0);
+          const visible = !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0;
+          this.classList.toggle('is-visible', visible);
+          this.setAttribute('aria-hidden', visible ? 'false' : 'true');
+          button.tabIndex = visible ? 0 : -1;
         },
         { threshold: 0 }
       );
