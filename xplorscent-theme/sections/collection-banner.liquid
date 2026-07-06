@@ -8,6 +8,7 @@
       }}
     </div>
     <div class="container">
+      {% render 'breadcrumbs' %}
       <div class="collection-banner__content">
         <h1>{{ collection.title | escape }}</h1>
         {%- if section.settings.show_description and collection.description != blank -%}
@@ -19,6 +20,7 @@
 {%- else -%}
   <div class="collection-banner">
     <div class="container">
+      {% render 'breadcrumbs' %}
       <div class="collection-banner__content">
         <h1>{{ collection.title | escape }}</h1>
         {%- if section.settings.show_description and collection.description != blank -%}

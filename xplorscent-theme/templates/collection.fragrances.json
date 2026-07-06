@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "banner": {
+      "type": "collection-banner",
+      "settings": { "show_image": true, "show_description": true }
+    },
+    "product_grid": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 16,
+        "enable_filtering": true,
+        "enable_sorting": true
+      }
+    },
+    "craft_note": {
+      "type": "rich-text",
+      "blocks": {
+        "eyebrow": { "type": "eyebrow", "settings": { "text": "The craft" } },
+        "heading": {
+          "type": "heading",
+          "settings": { "heading": "Composed for long wear", "size": "h2" }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Every eau de parfum is composed at high concentration in Dubai — rare oud, bright citrus and refined florals structured in the French tradition, built to stay with you for up to 12 hours.</p>"
+          }
+        }
+      },
+      "block_order": ["eyebrow", "heading", "text"],
+      "settings": { "alignment": "center", "background": "surface" }
+    },
+    "recently_viewed": {
+      "type": "recently-viewed",
+      "settings": { "heading": "Recently viewed", "products_to_show": 4 }
+    }
+  },
+  "order": ["banner", "product_grid", "craft_note", "recently_viewed"]
+}

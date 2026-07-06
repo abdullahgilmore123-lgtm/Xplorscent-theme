@@ -2,6 +2,29 @@
 
 All notable changes and the design decisions behind them.
 
+## [1.4.0] — 2026-07-06
+
+Exclusive-pass release: a restrained elevation of the visual language plus dedicated
+templates for every collection and every product type in the catalog.
+
+### Design
+- Letterspaced uppercase serif wordmark; hairline rules flanking eyebrow labels.
+- Product cards refined to boutique style: centered, editorial serif titles, softened
+  price color, quick-add revealed on hover/focus on desktop (always visible on touch).
+- Buttons: finer tracking. Breadcrumb trail styled for light and image banners.
+
+### Added
+- **Breadcrumbs** with `BreadcrumbList` structured data on product and collection pages.
+- **Product templates:** `product.mist` (how-to-use, layering, mist FAQ),
+  `product.set` (what's inside, gifting, value FAQ), `product.discovery` (contents,
+  how-to-explore, travel FAQ) — plus a product-page FAQ section on the default EDP
+  template. All templates carry gallery, sticky ATC, scent notes, trust row, shipping/
+  returns accordions, complementary products, related products and recently viewed.
+- **Collection templates:** `collection.fragrances` (craft note),
+  `collection.mists` (layering editorial), `collection.sets` (why-a-set row),
+  `collection.scent-family` (cross-links the other families + Discovery Set callout),
+  each ending in recently-viewed. Template assignment map added to the setup guide.
+
 ## [1.3.0] — 2026-07-06
 
 Visual-fallback release: the theme now previews as a finished boutique with zero grey

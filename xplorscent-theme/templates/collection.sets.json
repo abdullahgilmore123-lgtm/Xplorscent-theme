@@ -1,0 +1,58 @@
+{
+  "sections": {
+    "banner": {
+      "type": "collection-banner",
+      "settings": { "show_image": true, "show_description": true }
+    },
+    "product_grid": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 16,
+        "enable_filtering": true,
+        "enable_sorting": true
+      }
+    },
+    "gifting_note": {
+      "type": "multicolumn",
+      "blocks": {
+        "g1": {
+          "type": "column",
+          "settings": {
+            "icon": "gift",
+            "title": "Gift-ready",
+            "text": "<p>Presentation packaging with an optional gift note at checkout.</p>"
+          }
+        },
+        "g2": {
+          "type": "column",
+          "settings": {
+            "icon": "droplet",
+            "title": "Two expressions",
+            "text": "<p>The eau de parfum for depth, the mist for everyday lightness.</p>"
+          }
+        },
+        "g3": {
+          "type": "column",
+          "settings": {
+            "icon": "check",
+            "title": "Better together",
+            "text": "<p>Priced below the two pieces bought individually.</p>"
+          }
+        }
+      },
+      "block_order": ["g1", "g2", "g3"],
+      "settings": {
+        "eyebrow": "Why a set",
+        "heading": "One signature, two ways to wear it",
+        "columns_desktop": 3,
+        "center_content": true,
+        "background": "surface"
+      }
+    },
+    "recently_viewed": {
+      "type": "recently-viewed",
+      "settings": { "heading": "Recently viewed", "products_to_show": 4 }
+    }
+  },
+  "order": ["banner", "product_grid", "gifting_note", "recently_viewed"]
+}

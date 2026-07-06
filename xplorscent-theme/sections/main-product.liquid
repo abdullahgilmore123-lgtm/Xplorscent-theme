@@ -1,6 +1,7 @@
-<section class="section" data-product-handle="{{ product.handle }}">
+<section class="section" data-product-handle="{{ product.handle }}" style="padding-top: 0;">
   <div class="container">
-    <div class="product">
+    {% render 'breadcrumbs' %}
+    <div class="product" style="margin-top: 2.8rem;">
       {%- comment -%} Gallery {%- endcomment -%}
       <product-gallery class="product__gallery">
         <div class="product__media-list" tabindex="0" aria-label="{{ 'products.product.media.gallery_label' | t }}">

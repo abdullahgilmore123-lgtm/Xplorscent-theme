@@ -10,6 +10,10 @@
   },
   "general": {
     "continue_shopping": "Continue shopping",
+    "breadcrumbs": {
+      "label": "Breadcrumbs",
+      "home": "Home"
+    },
     "meta": {
       "tags": "Tagged \"{{ tags }}\""
     },

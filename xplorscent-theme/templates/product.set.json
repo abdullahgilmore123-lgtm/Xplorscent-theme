@@ -18,13 +18,23 @@
             "item_1": "Free shipping over $75",
             "item_2": "30-day returns",
             "item_3": "Secure checkout",
-            "item_4": "Best Dubai Fragrance 2024"
+            "item_4": "Gift-ready set"
           }
         },
         "description": { "type": "description", "settings": {} },
-        "scent_notes": {
-          "type": "scent_notes",
-          "settings": { "top_notes": "", "heart_notes": "", "base_notes": "" }
+        "whats_inside": {
+          "type": "accordion",
+          "settings": {
+            "heading": "What's inside",
+            "content": "<p>The full ritual in one box: the 100&nbsp;mL eau de parfum for depth and presence, paired with the matching hair &amp; body mist for light, everyday refreshes.</p>"
+          }
+        },
+        "gifting": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Gifting",
+            "content": "<p>Sets arrive in presentation-ready packaging. Add a gift note at checkout and we'll leave the invoice out of the box.</p>"
+          }
         },
         "shipping": {
           "type": "accordion",
@@ -37,12 +47,12 @@
           "type": "accordion",
           "settings": {
             "heading": "Returns & exchanges",
-            "content": "<p>Changed your mind? Unopened items can be returned within 30 days of delivery for a full refund.</p>"
+            "content": "<p>Unopened items can be returned within 30 days of delivery for a full refund.</p>"
           }
         },
         "complementary": {
           "type": "complementary",
-          "settings": { "heading": "Pairs well with", "limit": 2 }
+          "settings": { "heading": "Explore more", "limit": 2 }
         }
       },
       "block_order": [
@@ -54,7 +64,8 @@
         "buy_buttons",
         "trust",
         "description",
-        "scent_notes",
+        "whats_inside",
+        "gifting",
         "shipping",
         "returns",
         "complementary"
@@ -67,26 +78,19 @@
         "q1": {
           "type": "question",
           "settings": {
-            "question": "How should I apply an eau de parfum?",
-            "answer": "<p>Spray onto pulse points — wrists, neck, behind the ears — from about 15&nbsp;cm. Moisturized skin holds scent longer; don't rub, let it settle.</p>"
+            "question": "Is the set better value than buying separately?",
+            "answer": "<p>Yes — the Mist &amp; Fragrance Sets are priced below the two pieces bought individually.</p>"
           }
         },
         "q2": {
           "type": "question",
           "settings": {
-            "question": "How long will it last on skin?",
-            "answer": "<p>Our compositions are built for long wear — up to 12 hours depending on the scent and your skin chemistry.</p>"
-          }
-        },
-        "q3": {
-          "type": "question",
-          "settings": {
-            "question": "Can I try before committing to a full bottle?",
-            "answer": "<p>Yes — the <strong>Discovery Spray Set</strong> carries all five signatures in 3&nbsp;mL travel sprays.</p>"
+            "question": "How do I wear the two together?",
+            "answer": "<p>Start with the eau de parfum on pulse points, then veil hair and body with the mist. Reapply the mist through the day to lift the signature.</p>"
           }
         }
       },
-      "block_order": ["q1", "q2", "q3"],
+      "block_order": ["q1", "q2"],
       "settings": {
         "eyebrow": "Good to know",
         "heading": "Questions, answered",

@@ -81,6 +81,26 @@ The CSV columns then populate them on import. Review-app ratings use the standar
 Give each collection an image (2400 × 800 px) and a one-line description — the theme's
 collection banner uses both.
 
+### Template assignments
+
+The theme ships dedicated templates. Assign them in the admin (right-hand "Theme
+template" selector on each product/collection):
+
+| Where | Template |
+|---|---|
+| All 5 eaux de parfum | `product` (default — scent pyramid, EDP FAQ) |
+| All 4 hair & body mists | `product.mist` (how-to-use + layering guidance) |
+| All 4 mist & fragrance sets | `product.set` (what's inside + gifting) |
+| Discovery Spray Set | `product.discovery` (contents, how to explore, travel FAQ) |
+| `fragrances` collection | `collection.fragrances` (craft note) |
+| `mists` collection | `collection.mists` (layering editorial) |
+| `sets` collection | `collection.sets` (why-a-set row) |
+| 4 scent-family collections | `collection.scent-family` (cross-links the other families) |
+| `best-sellers`, `all` | `collection` (default) |
+
+Every template is fully dynamic — content renders from the product/collection itself
+plus editable section defaults; nothing is hardcoded to specific products.
+
 ## 4. Navigation
 
 **Main menu** (`main-menu`):

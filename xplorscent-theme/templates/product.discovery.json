@@ -18,13 +18,23 @@
             "item_1": "Free shipping over $75",
             "item_2": "30-day returns",
             "item_3": "Secure checkout",
-            "item_4": "Best Dubai Fragrance 2024"
+            "item_4": "All five signatures"
           }
         },
         "description": { "type": "description", "settings": {} },
-        "scent_notes": {
-          "type": "scent_notes",
-          "settings": { "top_notes": "", "heart_notes": "", "base_notes": "" }
+        "whats_inside": {
+          "type": "accordion",
+          "settings": {
+            "heading": "What's inside",
+            "content": "<p>Five 3&nbsp;mL travel sprays — <strong>The One</strong>, <strong>Sensation</strong>, <strong>Victorious</strong>, <strong>Essence of Elegance</strong> and <strong>True Imagination</strong>. Each holds roughly 40 sprays: enough to live with a scent, not just sample it.</p>"
+          }
+        },
+        "how_to_explore": {
+          "type": "accordion",
+          "settings": {
+            "heading": "How to explore",
+            "content": "<p>Wear one scent per day on skin, not paper. Note what you reach for twice — that's your signature. When you've found it, the full bottle is waiting.</p>"
+          }
         },
         "shipping": {
           "type": "accordion",
@@ -33,16 +43,9 @@
             "content": "<p>Orders ship within 1–2 business days with tracked delivery. Complimentary shipping on orders over $75.</p>"
           }
         },
-        "returns": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Returns & exchanges",
-            "content": "<p>Changed your mind? Unopened items can be returned within 30 days of delivery for a full refund.</p>"
-          }
-        },
         "complementary": {
           "type": "complementary",
-          "settings": { "heading": "Pairs well with", "limit": 2 }
+          "settings": { "heading": "Found your signature?", "limit": 3 }
         }
       },
       "block_order": [
@@ -54,9 +57,9 @@
         "buy_buttons",
         "trust",
         "description",
-        "scent_notes",
+        "whats_inside",
+        "how_to_explore",
         "shipping",
-        "returns",
         "complementary"
       ],
       "settings": { "enable_sticky_atc": true }
@@ -67,26 +70,19 @@
         "q1": {
           "type": "question",
           "settings": {
-            "question": "How should I apply an eau de parfum?",
-            "answer": "<p>Spray onto pulse points — wrists, neck, behind the ears — from about 15&nbsp;cm. Moisturized skin holds scent longer; don't rub, let it settle.</p>"
+            "question": "How many wears is 3 mL?",
+            "answer": "<p>Roughly 40 sprays per bottle — about a week of daily wear per scent, plenty to know if it's yours.</p>"
           }
         },
         "q2": {
           "type": "question",
           "settings": {
-            "question": "How long will it last on skin?",
-            "answer": "<p>Our compositions are built for long wear — up to 12 hours depending on the scent and your skin chemistry.</p>"
-          }
-        },
-        "q3": {
-          "type": "question",
-          "settings": {
-            "question": "Can I try before committing to a full bottle?",
-            "answer": "<p>Yes — the <strong>Discovery Spray Set</strong> carries all five signatures in 3&nbsp;mL travel sprays.</p>"
+            "question": "Can I travel with them?",
+            "answer": "<p>Yes — each spray is well under carry-on liquid limits, and the set is made for the journey.</p>"
           }
         }
       },
-      "block_order": ["q1", "q2", "q3"],
+      "block_order": ["q1", "q2"],
       "settings": {
         "eyebrow": "Good to know",
         "heading": "Questions, answered",
@@ -97,7 +93,7 @@
     },
     "related": {
       "type": "related-products",
-      "settings": { "heading": "Continue exploring", "products_to_show": 4 }
+      "settings": { "heading": "Meet the full bottles", "products_to_show": 4 }
     },
     "recently_viewed": {
       "type": "recently-viewed",

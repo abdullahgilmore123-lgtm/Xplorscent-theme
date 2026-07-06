@@ -18,13 +18,27 @@
             "item_1": "Free shipping over $75",
             "item_2": "30-day returns",
             "item_3": "Secure checkout",
-            "item_4": "Best Dubai Fragrance 2024"
+            "item_4": ""
           }
         },
         "description": { "type": "description", "settings": {} },
         "scent_notes": {
           "type": "scent_notes",
           "settings": { "top_notes": "", "heart_notes": "", "base_notes": "" }
+        },
+        "how_to_use": {
+          "type": "accordion",
+          "settings": {
+            "heading": "How to use",
+            "content": "<p>Mist generously over hair and body from about 20&nbsp;cm, any time of day. Lightweight by design — reapply whenever you like. Lasts up to 6 hours.</p>"
+          }
+        },
+        "layering": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Layering with the eau de parfum",
+            "content": "<p>Wear the mist alone for a soft everyday presence, or layer it over the matching eau de parfum to extend and amplify the signature.</p>"
+          }
         },
         "shipping": {
           "type": "accordion",
@@ -37,12 +51,12 @@
           "type": "accordion",
           "settings": {
             "heading": "Returns & exchanges",
-            "content": "<p>Changed your mind? Unopened items can be returned within 30 days of delivery for a full refund.</p>"
+            "content": "<p>Unopened items can be returned within 30 days of delivery for a full refund.</p>"
           }
         },
         "complementary": {
           "type": "complementary",
-          "settings": { "heading": "Pairs well with", "limit": 2 }
+          "settings": { "heading": "Complete the ritual", "limit": 2 }
         }
       },
       "block_order": [
@@ -55,6 +69,8 @@
         "trust",
         "description",
         "scent_notes",
+        "how_to_use",
+        "layering",
         "shipping",
         "returns",
         "complementary"
@@ -67,26 +83,19 @@
         "q1": {
           "type": "question",
           "settings": {
-            "question": "How should I apply an eau de parfum?",
-            "answer": "<p>Spray onto pulse points — wrists, neck, behind the ears — from about 15&nbsp;cm. Moisturized skin holds scent longer; don't rub, let it settle.</p>"
+            "question": "What's the difference between the mist and the eau de parfum?",
+            "answer": "<p>The mist carries the same signature at a lighter concentration — airy, refreshable, kind to hair. The eau de parfum is deeper and built for up to 12 hours of wear.</p>"
           }
         },
         "q2": {
           "type": "question",
           "settings": {
-            "question": "How long will it last on skin?",
-            "answer": "<p>Our compositions are built for long wear — up to 12 hours depending on the scent and your skin chemistry.</p>"
-          }
-        },
-        "q3": {
-          "type": "question",
-          "settings": {
-            "question": "Can I try before committing to a full bottle?",
-            "answer": "<p>Yes — the <strong>Discovery Spray Set</strong> carries all five signatures in 3&nbsp;mL travel sprays.</p>"
+            "question": "Is it safe for hair?",
+            "answer": "<p>Yes — the hair &amp; body mist is formulated to be gentle enough for hair while leaving a lasting veil of scent.</p>"
           }
         }
       },
-      "block_order": ["q1", "q2", "q3"],
+      "block_order": ["q1", "q2"],
       "settings": {
         "eyebrow": "Good to know",
         "heading": "Questions, answered",

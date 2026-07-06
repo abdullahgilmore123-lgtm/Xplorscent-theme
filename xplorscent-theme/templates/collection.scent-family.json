@@ -1,0 +1,50 @@
+{
+  "sections": {
+    "banner": {
+      "type": "collection-banner",
+      "settings": { "show_image": true, "show_description": true }
+    },
+    "product_grid": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 16,
+        "enable_filtering": true,
+        "enable_sorting": true
+      }
+    },
+    "other_families": {
+      "type": "scent-finder",
+      "blocks": {
+        "oud": {
+          "type": "family",
+          "settings": { "title": "Oud & Spicy", "notes": "Oud · Black pepper · Amber" }
+        },
+        "citrus": {
+          "type": "family",
+          "settings": { "title": "Citrus & Aromatic", "notes": "Lemon · Lavender · Sandalwood" }
+        },
+        "fruity": {
+          "type": "family",
+          "settings": { "title": "Fruity & Vibrant", "notes": "Apple · Black currant · Vanilla" }
+        },
+        "floral": {
+          "type": "family",
+          "settings": { "title": "Floral & Woody", "notes": "Jasmine · Iris · Sandalwood" }
+        }
+      },
+      "block_order": ["oud", "citrus", "fruity", "floral"],
+      "settings": {
+        "eyebrow": "Keep exploring",
+        "heading": "The other families",
+        "subheading": "Four moods, five signatures — every one unisex.",
+        "cta_text": "Or try all five in miniature.",
+        "cta_label": "Shop the Discovery Set"
+      }
+    },
+    "recently_viewed": {
+      "type": "recently-viewed",
+      "settings": { "heading": "Recently viewed", "products_to_show": 4 }
+    }
+  },
+  "order": ["banner", "product_grid", "other_families", "recently_viewed"]
+}
