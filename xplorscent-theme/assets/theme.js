@@ -334,6 +334,83 @@
     document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-revealed'));
   }
 
+  /* Subtle parallax ---------------------------------------------------------------- */
+
+  const parallaxEls = document.querySelectorAll('[data-parallax]');
+  if (parallaxEls.length && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    let ticking = false;
+    const update = () => {
+      const vh = window.innerHeight;
+      parallaxEls.forEach((el) => {
+        const rect = el.parentElement.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > vh) return;
+        const speed = parseFloat(el.dataset.parallax) || 0.15;
+        const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
+        el.style.transform = `translateY(${(-progress * speed * 100).toFixed(2)}px)`;
+      });
+      ticking = false;
+    };
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(update);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+    update();
+  }
+
+  /* Scroll scene (fragrance story) --------------------------------------------------- */
+
+  class ScrollScene extends HTMLElement {
+    connectedCallback() {
+      this.chapters = Array.from(this.querySelectorAll('[data-scene-chapter]'));
+      this.media = Array.from(this.querySelectorAll('[data-scene-media]'));
+      if (!this.chapters.length) return;
+      this.activate(0);
+      if (!('IntersectionObserver' in window)) return;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) this.activate(parseInt(entry.target.dataset.sceneChapter, 10));
+          });
+        },
+        { rootMargin: '-42% 0px -42% 0px' }
+      );
+      this.chapters.forEach((chapter) => observer.observe(chapter));
+    }
+
+    activate(index) {
+      this.chapters.forEach((chapter, i) => chapter.classList.toggle('is-active', i === index));
+      this.media.forEach((img, i) => img.classList.toggle('is-active', i === index));
+    }
+  }
+
+  customElements.define('scroll-scene', ScrollScene);
+
+  /* Signatures index hover reveals ------------------------------------------------------ */
+
+  class SignaturesIndex extends HTMLElement {
+    connectedCallback() {
+      const rows = this.querySelectorAll('[data-signature-row]');
+      const images = this.querySelectorAll('[data-signature-media]');
+      if (!images.length) return;
+      const activate = (index) => {
+        images.forEach((img, i) => img.classList.toggle('is-active', i === index));
+      };
+      rows.forEach((row, index) => {
+        row.addEventListener('mouseenter', () => activate(index));
+        row.addEventListener('focusin', () => activate(index));
+      });
+      activate(0);
+    }
+  }
+
+  customElements.define('signatures-index', SignaturesIndex);
+
   /* Predictive search ------------------------------------------------------------ */
 
   class PredictiveSearch extends HTMLElement {

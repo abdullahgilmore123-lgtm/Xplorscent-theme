@@ -2,6 +2,47 @@
 
 All notable changes and the design decisions behind them.
 
+## [1.6.0] — 2026-07-06
+
+Flagship release: the homepage becomes a scene-based journey and the entire visual
+layer moves from flat vector to cinematic art direction. Nothing was rebuilt — every
+existing section, template and setting remains intact.
+
+### Art direction
+- **All 14 brand visuals regenerated as photographic-grade compositions** (same
+  filenames — real photography still drops in with zero code changes): studio-lit
+  flacons with glass highlight streaks, metallic caps, rim light, contact shadows and
+  floor reflections; a dusk-atelier hero trio with bronze backlight and vignette;
+  four atmospheric scent-family moods (oud smoke over embers, sunlit citrus haze,
+  blush-dusk bokeh, ivory floral light); amber-liquid macro, silk drape and dune-light
+  scenes. Film-grain overlay throughout. 1.6–9.4 KB per file.
+- External stock-photo CDNs are unreachable from this build environment, so these
+  generated cinematic pieces serve as the premium temporary imagery — no cartoons,
+  no line art, no grey anything.
+
+### New scenes
+- **Cinematic hero** — new "Display" heading size (up to ~10.4rem) with an italic
+  serif accent line, slow Ken Burns zoom or subtle parallax on the media (merchant
+  choice, auto-disabled for reduced motion), and an animated scroll cue.
+- **Manifesto** — oversized editorial statement (italics render in bronze) with two
+  asymmetric floating images on gentle parallax; becomes a composed image pair on mobile.
+- **Signatures index** — the anti-product-grid: five oversized serif rows (01–05) with
+  note lines and prices; hovering/focusing a row crossfades its image in a floating
+  panel (desktop) with inline thumbnails on mobile. Fully dynamic product blocks —
+  pick products and title/image/price/URL populate automatically.
+- **Fragrance story** — split-screen scroll scene: a sticky image column crossfades
+  through The Opening / The Heart / The Trail as chapters activate on scroll; inactive
+  chapters sit at reduced opacity; chapters carry their own imagery on mobile.
+
+### Homepage recomposition
+Hero → Manifesto → Signatures index → Fragrance story → Shop ("Carry one home") →
+Scent finder → Story → Why → Reviews → FAQ → Instagram → Newsletter. The duplicate
+"New & noteworthy" grid was removed — one shoppable grid, no repetition.
+
+### Motion system
+- rAF-throttled parallax utility (`data-parallax`), scroll-scene and signatures-index
+  custom elements — all gated behind `prefers-reduced-motion` and the `.js` class.
+
 ## [1.5.1] — 2026-07-06
 
 Expert-review release: fixes found in a page-by-page pass as creative director,

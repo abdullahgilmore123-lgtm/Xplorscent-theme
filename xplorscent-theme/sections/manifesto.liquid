@@ -1,0 +1,110 @@
+{% comment %}
+  Oversized editorial brand statement with asymmetric floating imagery.
+  Italic emphasis in the rich text renders in the accent color.
+{% endcomment %}
+
+<section class="section manifesto{% if section.settings.background == 'surface' %} color-surface{% elsif section.settings.background == 'inverse' %} color-inverse{% endif %}">
+  <div class="container">
+    <div class="manifesto__inner">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow reveal">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="manifesto__text reveal">{{ section.settings.text }}</div>
+      {%- endif -%}
+      {%- if section.settings.link_label != blank -%}
+        <div class="reveal" style="margin-top: 3.2rem;">
+          <a href="{{ section.settings.link }}" class="link">
+            {{ section.settings.link_label | escape }}
+            {% render 'icon', icon: 'arrow-right', size: 16 %}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.show_images -%}
+      <div class="manifesto__floats">
+        <div class="manifesto__float manifesto__float--1" data-parallax="0.5">
+          {%- if section.settings.image_1 != blank -%}
+            {{ section.settings.image_1 | image_url: width: 600 | image_tag: widths: '300, 600', sizes: '24vw', loading: 'lazy', alt: section.settings.image_1.alt }}
+          {%- else -%}
+            {% render 'brand-visual', kind: 'bottle', index: 0 %}
+          {%- endif -%}
+        </div>
+        <div class="manifesto__float manifesto__float--2" data-parallax="0.3">
+          {%- if section.settings.image_2 != blank -%}
+            {{ section.settings.image_2 | image_url: width: 500 | image_tag: widths: '250, 500', sizes: '19vw', loading: 'lazy', alt: section.settings.image_2.alt }}
+          {%- else -%}
+            {% render 'brand-visual', kind: 'square', index: 0 %}
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Manifesto",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The house"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Statement",
+      "info": "Italicized words render in the accent color.",
+      "default": "<p>Scent is the shortest road to <em>memory</em>. We compose ours in Dubai — Arabian oud, French structure — for the ones still <em>exploring</em>.</p>"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "Our story"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_images",
+      "label": "Show floating imagery",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Floating image 1",
+      "info": "Recommended: 800 x 1000px (4:5)."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Floating image 2",
+      "info": "Recommended: 800 x 800px (1:1)."
+    },
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Background",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "surface", "label": "Soft beige" },
+        { "value": "inverse", "label": "Charcoal" }
+      ],
+      "default": "default"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Manifesto"
+    }
+  ]
+}
+{% endschema %}

@@ -15,7 +15,10 @@
 -%}
 
 <section class="hero {{ height_class }} hero--inverse" style="--hero-overlay: {{ section.settings.overlay_opacity }};">
-  <div class="hero__media">
+  <div
+    class="hero__media{% if section.settings.motion == 'kenburns' %} hero__media--kenburns{% endif %}"
+    {% if section.settings.motion == 'parallax' %}data-parallax="0.4"{% endif %}
+  >
     {%- if section.settings.image != blank -%}
       {{
         section.settings.image
@@ -38,7 +41,15 @@
         {%- when 'eyebrow' -%}
           <p class="eyebrow" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
         {%- when 'heading' -%}
-          <h2 class="hero__heading {{ block.settings.size }}" {{ block.shopify_attributes }}>{{ block.settings.heading | escape }}</h2>
+          <h2
+            class="hero__heading {% if block.settings.size == 'display' %}hero__heading--display{% else %}{{ block.settings.size }}{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            {{- block.settings.heading | escape -}}
+            {%- if block.settings.heading_accent != blank -%}
+              <em class="hero__heading-accent">{{ block.settings.heading_accent | escape }}</em>
+            {%- endif -%}
+          </h2>
         {%- when 'text' -%}
           <p class="hero__text" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
         {%- when 'buttons' -%}
@@ -53,6 +64,10 @@
       {%- endcase -%}
     {%- endfor -%}
   </div>
+
+  {%- if section.settings.show_scroll_cue -%}
+    <div class="hero__scroll-cue" aria-hidden="true">{{ 'general.scroll' | t }}</div>
+  {%- endif -%}
 </section>
 
 {% schema %}
@@ -96,6 +111,24 @@
       "step": 5,
       "unit": "%",
       "default": 25
+    },
+    {
+      "type": "select",
+      "id": "motion",
+      "label": "Image motion",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "kenburns", "label": "Slow cinematic zoom" },
+        { "value": "parallax", "label": "Subtle parallax" }
+      ],
+      "default": "kenburns",
+      "info": "Automatically disabled for visitors who prefer reduced motion."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_scroll_cue",
+      "label": "Show scroll cue",
+      "default": false
     }
   ],
   "blocks": [
@@ -129,9 +162,16 @@
           "label": "Heading size",
           "options": [
             { "value": "h1", "label": "Large" },
-            { "value": "h0", "label": "Extra large" }
+            { "value": "h0", "label": "Extra large" },
+            { "value": "display", "label": "Display (cinematic)" }
           ],
           "default": "h0"
+        },
+        {
+          "type": "text",
+          "id": "heading_accent",
+          "label": "Italic accent line",
+          "info": "Rendered on its own line in italic serif."
         }
       ]
     },

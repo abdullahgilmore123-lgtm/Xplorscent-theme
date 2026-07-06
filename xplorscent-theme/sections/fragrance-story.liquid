@@ -1,0 +1,212 @@
+{% comment %}
+  Split-screen scroll scene: a sticky image column crossfades through
+  chapters (top / heart / base) as the visitor scrolls the story on the
+  right. On mobile each chapter carries its own image inline.
+{% endcomment %}
+
+<section class="section{% if section.settings.background == 'surface' %} color-surface{% endif %}">
+  <div class="container">
+    <div class="section__header reveal">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2>{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="section__subheading">{{ section.settings.subheading | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    <scroll-scene class="scroll-scene">
+      <div class="scroll-scene__media" aria-hidden="true">
+        {%- for block in section.blocks -%}
+          <span class="scroll-scene__media-item" data-scene-media>
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 1100 | image_tag: widths: '550, 800, 1100', sizes: '46vw', loading: 'lazy', alt: '' }}
+            {%- else -%}
+              <img
+                src="{{ 'xs-family-' | append: block.settings.mood | append: '.svg' | asset_url }}"
+                alt=""
+                width="800"
+                height="1060"
+                loading="lazy"
+              >
+            {%- endif -%}
+          </span>
+        {%- endfor -%}
+      </div>
+
+      <div class="scroll-scene__chapters">
+        {%- for block in section.blocks -%}
+          <div class="scroll-scene__chapter" data-scene-chapter="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+            <span class="scroll-scene__index" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+            {%- if block.settings.label != blank -%}
+              <p class="scroll-scene__label">{{ block.settings.label | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.heading != blank -%}
+              <h3>{{ block.settings.heading | escape }}</h3>
+            {%- endif -%}
+            <div class="scroll-scene__chapter-media">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 800 | image_tag: widths: '400, 800', sizes: '100vw', loading: 'lazy', alt: block.settings.image.alt }}
+              {%- else -%}
+                <img
+                  src="{{ 'xs-family-' | append: block.settings.mood | append: '.svg' | asset_url }}"
+                  alt=""
+                  width="800"
+                  height="1060"
+                  loading="lazy"
+                >
+              {%- endif -%}
+            </div>
+            {%- if block.settings.text != blank -%}
+              <div class="rte">{{ block.settings.text }}</div>
+            {%- endif -%}
+            {%- if block.settings.notes != blank -%}
+              <div class="scroll-scene__notes">
+                {%- assign notes = block.settings.notes | split: ',' -%}
+                {%- for note in notes -%}
+                  <span class="pill">{{ note | strip | escape }}</span>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+
+        {%- if section.settings.cta_label != blank -%}
+          <div class="scroll-scene__cta">
+            <a href="{{ section.settings.cta_link }}" class="button">{{ section.settings.cta_label | escape }}</a>
+          </div>
+        {%- endif -%}
+      </div>
+    </scroll-scene>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fragrance story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Anatomy of a scent"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How an XplorScent unfolds"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Every composition is a journey in three movements."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Begin with the Discovery Set"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Background",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "surface", "label": "Soft beige" }
+      ],
+      "default": "surface"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "chapter",
+      "name": "Chapter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "The opening"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "It begins in light"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>The first breath — bright bergamot and citrus lift off the skin in the opening minutes, setting the tone for everything beneath.</p>"
+        },
+        {
+          "type": "text",
+          "id": "notes",
+          "label": "Notes",
+          "info": "Comma-separated; rendered as pills.",
+          "default": "Bergamot, Lemon, Mandarin"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Recommended: 1100 x 1375px (4:5)."
+        },
+        {
+          "type": "select",
+          "id": "mood",
+          "label": "Fallback mood art",
+          "options": [
+            { "value": "citrus", "label": "Sunlit citrus" },
+            { "value": "floral", "label": "Soft floral" },
+            { "value": "fruity", "label": "Dusk fruit" },
+            { "value": "oud", "label": "Oud smoke" }
+          ],
+          "default": "citrus"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Fragrance story",
+      "blocks": [
+        { "type": "chapter" },
+        {
+          "type": "chapter",
+          "settings": {
+            "label": "The heart",
+            "heading": "Then it blooms",
+            "text": "<p>As the light settles, the heart emerges — florals, spice and herbs weaving the character you'll be remembered by.</p>",
+            "notes": "Jasmine, Black pepper, Lavender",
+            "mood": "floral"
+          }
+        },
+        {
+          "type": "chapter",
+          "settings": {
+            "label": "The trail",
+            "heading": "And it stays",
+            "text": "<p>Hours later, the base remains: oud, amber and sandalwood — the trail that lingers in a room after you've left it.</p>",
+            "notes": "Oud, Amber, Sandalwood",
+            "mood": "oud"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

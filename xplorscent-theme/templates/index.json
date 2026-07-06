@@ -9,7 +9,11 @@
         },
         "heading": {
           "type": "heading",
-          "settings": { "heading": "Fragrance, made to be explored", "size": "h0" }
+          "settings": {
+            "heading": "Fragrance, made",
+            "heading_accent": "to be explored",
+            "size": "display"
+          }
         },
         "text": {
           "type": "text",
@@ -29,14 +33,101 @@
       "settings": {
         "height": "large",
         "content_position": "bottom-left",
-        "overlay_opacity": 25
+        "overlay_opacity": 20,
+        "motion": "kenburns",
+        "show_scroll_cue": true
+      }
+    },
+    "manifesto": {
+      "type": "manifesto",
+      "settings": {
+        "eyebrow": "The house",
+        "text": "<p>Scent is the shortest road to <em>memory</em>. We compose ours in Dubai — Arabian oud, French structure — for the ones still <em>exploring</em>.</p>",
+        "link_label": "Our story",
+        "link": "shopify://pages/about",
+        "show_images": true,
+        "background": "default"
+      }
+    },
+    "signatures_index": {
+      "type": "signatures-index",
+      "blocks": {
+        "sig_1": {
+          "type": "signature",
+          "settings": { "title": "The One", "notes": "Oud · Black pepper · Amber" }
+        },
+        "sig_2": {
+          "type": "signature",
+          "settings": { "title": "Sensation", "notes": "Lemon · Lavender · Sandalwood" }
+        },
+        "sig_3": {
+          "type": "signature",
+          "settings": { "title": "Victorious", "notes": "Apple · Black currant · Vanilla" }
+        },
+        "sig_4": {
+          "type": "signature",
+          "settings": { "title": "Essence of Elegance", "notes": "Iris · Jasmine · Saffron" }
+        },
+        "sig_5": {
+          "type": "signature",
+          "settings": { "title": "True Imagination", "notes": "White lily · Rose · Sandalwood" }
+        }
+      },
+      "block_order": ["sig_1", "sig_2", "sig_3", "sig_4", "sig_5"],
+      "settings": {
+        "eyebrow": "The collection",
+        "heading": "Five signatures",
+        "background": "default"
+      }
+    },
+    "fragrance_story": {
+      "type": "fragrance-story",
+      "blocks": {
+        "opening": {
+          "type": "chapter",
+          "settings": {
+            "label": "The opening",
+            "heading": "It begins in light",
+            "text": "<p>The first breath — bright bergamot and citrus lift off the skin in the opening minutes, setting the tone for everything beneath.</p>",
+            "notes": "Bergamot, Lemon, Mandarin",
+            "mood": "citrus"
+          }
+        },
+        "heart": {
+          "type": "chapter",
+          "settings": {
+            "label": "The heart",
+            "heading": "Then it blooms",
+            "text": "<p>As the light settles, the heart emerges — florals, spice and herbs weaving the character you'll be remembered by.</p>",
+            "notes": "Jasmine, Black pepper, Lavender",
+            "mood": "floral"
+          }
+        },
+        "trail": {
+          "type": "chapter",
+          "settings": {
+            "label": "The trail",
+            "heading": "And it stays",
+            "text": "<p>Hours later, the base remains: oud, amber and sandalwood — the trail that lingers in a room after you've left it.</p>",
+            "notes": "Oud, Amber, Sandalwood",
+            "mood": "oud"
+          }
+        }
+      },
+      "block_order": ["opening", "heart", "trail"],
+      "settings": {
+        "eyebrow": "Anatomy of a scent",
+        "heading": "How an XplorScent unfolds",
+        "subheading": "Every composition is a journey in three movements.",
+        "cta_label": "Begin with the Discovery Set",
+        "background": "surface"
       }
     },
     "best_sellers": {
       "type": "featured-collection",
       "settings": {
-        "eyebrow": "The collection",
-        "heading": "Best sellers",
+        "eyebrow": "Shop",
+        "heading": "Carry one home",
         "subheading": "Signatures our explorers return to, season after season.",
         "collection": "all",
         "products_to_show": 4,
@@ -180,18 +271,6 @@
         "background": "surface"
       }
     },
-    "featured": {
-      "type": "featured-collection",
-      "settings": {
-        "eyebrow": "Just landed",
-        "heading": "New & noteworthy",
-        "collection": "",
-        "products_to_show": 4,
-        "show_view_all": false,
-        "enable_mobile_scroll": true,
-        "background": "default"
-      }
-    },
     "faq": {
       "type": "faq",
       "blocks": {
@@ -263,12 +342,14 @@
   },
   "order": [
     "hero",
+    "manifesto",
+    "signatures_index",
+    "fragrance_story",
     "best_sellers",
     "scent_finder",
     "story",
     "why",
     "reviews",
-    "featured",
     "faq",
     "instagram",
     "newsletter"
