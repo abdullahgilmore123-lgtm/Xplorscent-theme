@@ -91,7 +91,7 @@ collection banner uses both.
 - Shop by Scent (nested) → the four family collections
 - About → `/pages/about`
 
-**Footer menu** (`footer`): About, FAQ, Contact, Shipping policy, Refund policy,
+**Footer menu** (`footer`): About, FAQ, Contact, Charity, Returns & Refund policy,
 Privacy policy, Terms of service.
 
 **Search quick links** (assign in Header section → "Popular search links"): create a menu
@@ -101,9 +101,22 @@ with Oud, Citrus, Floral, Discovery Set.
 
 | Page | Template | Notes |
 |---|---|---|
-| About | `page.about` | Pre-composed founder/craft story — edit copy in the theme editor |
-| FAQ | `page.faq` | Pre-loaded with the store's real FAQ topics + FAQPage schema |
-| Contact | `page.contact` | Form + your email/phone/address in section settings |
+| About | `page.about` | Founder story (Nadim Razaq) pre-composed from the live About copy |
+| FAQ | `page.faq` | The store's real FAQ topics (incl. Discovery Set samples answer) + FAQPage schema |
+| Contact | `page.contact` | Form + support@xplorscent.com pre-filled; add phone/address if wanted |
+| Charity | `page.charity` | Mission, four causes, JUST ONE TREE partner block — matches the live Charity page story |
+
+## 5b. Blogs
+
+The live store runs two blogs — recreate them so existing content has a home:
+
+| Blog | Suggested handle |
+|---|---|
+| Scented Reflections | `scented-reflections` |
+| Whispers Of Inspirations | `whispers-of-inspirations` |
+
+Both use the theme's blog/article templates automatically. Add one to the main menu
+(e.g. "Journal") when it has 3+ posts; until then leave blogs out of the nav.
 
 ## 6. Theme editor wiring (10 minutes)
 

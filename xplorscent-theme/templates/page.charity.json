@@ -1,0 +1,96 @@
+{
+  "sections": {
+    "intro": {
+      "type": "rich-text",
+      "blocks": {
+        "eyebrow": { "type": "eyebrow", "settings": { "text": "Giving back" } },
+        "heading": {
+          "type": "heading",
+          "settings": { "heading": "Every purchase makes an impact", "size": "h1" }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At Xplor Scent, a portion of our profits is dedicated to supporting charitable causes. It's how we were built: craftsmanship, quality, and a commitment to the betterment of society.</p>"
+          }
+        }
+      },
+      "block_order": ["eyebrow", "heading", "text"],
+      "settings": { "alignment": "center", "background": "default" }
+    },
+    "causes": {
+      "type": "multicolumn",
+      "blocks": {
+        "c1": {
+          "type": "column",
+          "settings": {
+            "icon": "droplet",
+            "title": "Mental health",
+            "text": "<p>Supporting organizations that make care and conversation accessible.</p>"
+          }
+        },
+        "c2": {
+          "type": "column",
+          "settings": {
+            "icon": "star",
+            "title": "Autism awareness",
+            "text": "<p>Partnering with charities that champion understanding and inclusion.</p>"
+          }
+        },
+        "c3": {
+          "type": "column",
+          "settings": {
+            "icon": "shield",
+            "title": "Homelessness",
+            "text": "<p>Contributing to shelter and support programs for those who need them most.</p>"
+          }
+        },
+        "c4": {
+          "type": "column",
+          "settings": {
+            "icon": "check",
+            "title": "Women's empowerment",
+            "text": "<p>Backing initiatives that open doors to education and opportunity.</p>"
+          }
+        }
+      },
+      "block_order": ["c1", "c2", "c3", "c4"],
+      "settings": {
+        "eyebrow": "The causes",
+        "heading": "Where your purchase goes",
+        "columns_desktop": 4,
+        "center_content": true,
+        "background": "surface"
+      }
+    },
+    "partner": {
+      "type": "image-with-text",
+      "blocks": {
+        "eyebrow": { "type": "eyebrow", "settings": { "text": "Our partner" } },
+        "heading": { "type": "heading", "settings": { "heading": "JUST ONE TREE" } },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We partner with JUST ONE TREE, a non-profit initiative devoted to removing CO2 from the atmosphere and restoring biodiversity through global reforestation. Every order helps put roots in the ground.</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": { "button_label": "Explore the collection", "button_link": "shopify://collections/all", "style": "link" }
+        }
+      },
+      "block_order": ["eyebrow", "heading", "text", "button"],
+      "settings": { "image_ratio": "square", "layout": "text_first", "background": "default" }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Newsletter",
+        "heading": "Join the exploration",
+        "text": "New fragrances, private launches and the impact your orders make.",
+        "background": "inverse"
+      }
+    }
+  },
+  "order": ["intro", "causes", "partner", "newsletter"]
+}

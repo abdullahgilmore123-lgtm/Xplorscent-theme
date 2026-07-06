@@ -30,6 +30,9 @@
       "block_order": ["shop", "support", "newsletter"],
       "settings": {
         "tagline": "Where French artistry meets the mystery of Arabian oud. Crafted in Dubai, made to be explored.",
+        "charity_text": "Every purchase supports charitable causes",
+        "charity_link": "shopify://pages/charity",
+        "support_email": "support@xplorscent.com",
         "show_social": true,
         "show_policies": true,
         "show_payment_icons": true,

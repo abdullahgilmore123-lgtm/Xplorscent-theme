@@ -7,7 +7,14 @@
           "type": "question",
           "settings": {
             "question": "How long do your fragrances last?",
-            "answer": "<p>Our eaux de parfum are composed at a high concentration for 8+ hours of wear. Longevity varies with skin type — apply to pulse points and moisturized skin for best results.</p>"
+            "answer": "<p>Our eaux de parfum are composed at a high concentration for long wear — up to 12 hours depending on the scent and your skin type. Apply to pulse points and moisturized skin for best results.</p>"
+          }
+        },
+        "q0": {
+          "type": "question",
+          "settings": {
+            "question": "Do you offer samples or testers?",
+            "answer": "<p>Yes — the <strong>Discovery Spray Set</strong> brings all five signature fragrances in 3&nbsp;mL travel sprays, so you can find your scent before committing to a full bottle.</p>"
           }
         },
         "q2": {
@@ -46,7 +53,7 @@
           }
         }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"],
+      "block_order": ["q1", "q2", "q0", "q3", "q4", "q5", "q6"],
       "settings": {
         "eyebrow": "Help",
         "heading": "Frequently asked questions",

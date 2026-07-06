@@ -6,6 +6,21 @@
         {%- if section.settings.tagline != blank -%}
           <p class="footer__tagline">{{ section.settings.tagline }}</p>
         {%- endif -%}
+        {%- if section.settings.charity_text != blank -%}
+          <p class="footer__charity caption">
+            {% render 'icon', icon: 'leaf', size: 14 %}
+            {%- if section.settings.charity_link != blank -%}
+              <a href="{{ section.settings.charity_link }}">{{ section.settings.charity_text | escape }}</a>
+            {%- else -%}
+              {{ section.settings.charity_text | escape }}
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+        {%- if section.settings.support_email != blank -%}
+          <p class="caption">
+            <a href="mailto:{{ section.settings.support_email }}">{{ section.settings.support_email }}</a>
+          </p>
+        {%- endif -%}
         {%- if section.settings.show_social -%}
           <div class="footer__social">
             {%- if settings.social_instagram_link != blank -%}
@@ -161,6 +176,24 @@
       "id": "tagline",
       "label": "Brand tagline",
       "default": "Where French artistry meets the mystery of Arabian oud. Crafted in Dubai, made to be explored."
+    },
+    {
+      "type": "text",
+      "id": "charity_text",
+      "label": "Charity line",
+      "default": "Every purchase supports charitable causes",
+      "info": "Shown under the tagline with a leaf icon."
+    },
+    {
+      "type": "url",
+      "id": "charity_link",
+      "label": "Charity page link"
+    },
+    {
+      "type": "text",
+      "id": "support_email",
+      "label": "Support email",
+      "default": "support@xplorscent.com"
     },
     {
       "type": "checkbox",

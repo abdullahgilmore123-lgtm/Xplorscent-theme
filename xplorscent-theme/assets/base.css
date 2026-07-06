@@ -1261,6 +1261,8 @@ select {
 .footer__brand { display: flex; flex-direction: column; gap: 1.8rem; max-width: 36rem; }
 .footer__logo { font-family: var(--font-heading); font-size: 2.2rem; letter-spacing: 0.08em; color: rgb(var(--color-background)); }
 .footer__tagline { font-size: 1.5rem; line-height: 1.7; }
+.footer__charity { display: flex; align-items: center; gap: 0.8rem; color: rgba(var(--color-background), 0.7); }
+.footer__charity .icon { color: rgb(var(--color-accent)); flex-shrink: 0; }
 .footer__heading {
   font-family: var(--font-body);
   font-size: 1.25rem;

@@ -124,16 +124,16 @@
             "text": "<p>High-concentration eaux de parfum designed to stay with you all day.</p>"
           }
         },
-        "shipping": {
+        "award": {
           "type": "column",
           "settings": {
-            "icon": "truck",
-            "title": "Fast, tracked shipping",
-            "text": "<p>Carefully packed and shipped with tracking on every order.</p>"
+            "icon": "star",
+            "title": "Award-winning",
+            "text": "<p>Named Best Dubai Fragrance 2024 — recognition for our debut collection.</p>"
           }
         }
       },
-      "block_order": ["crafted", "unisex", "longevity", "shipping"],
+      "block_order": ["crafted", "unisex", "longevity", "award"],
       "settings": {
         "eyebrow": "The difference",
         "heading": "Why XplorScent",
@@ -199,7 +199,7 @@
           "type": "question",
           "settings": {
             "question": "How long do your fragrances last?",
-            "answer": "<p>Our eaux de parfum are composed at a high concentration for 8+ hours of wear. Longevity varies with skin type — apply to pulse points and moisturized skin for best results.</p>"
+            "answer": "<p>Our eaux de parfum are composed at a high concentration for long wear — up to 12 hours depending on the scent and your skin type. Apply to pulse points and moisturized skin for best results.</p>"
           }
         },
         "q2": {

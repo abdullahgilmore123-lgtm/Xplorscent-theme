@@ -2,6 +2,31 @@
 
 All notable changes and the design decisions behind them.
 
+## [1.2.0] — 2026-07-06
+
+Content-sync release from the approved research phase (see repository-root
+`SITE_AUDIT.md` and `IMPLEMENTATION_PLAN.md`, Phase 3).
+
+### Added
+- **Charity page template** (`page.charity`) — mission statement, four-causes row
+  (mental health, autism awareness, homelessness, women's empowerment), JUST ONE TREE
+  partner block; mirrors the live Charity page story.
+- **Footer charity line + support email** — new footer settings (`charity_text`,
+  `charity_link`, `support_email`) rendered under the brand tagline; defaults wired in
+  the footer group.
+- **Award trust chip** — optional fourth product-page trust item with star icon,
+  defaulted to "Best Dubai Fragrance 2024"; homepage why-us column replaced the generic
+  shipping column with the award.
+
+### Changed
+- Contact template pre-fills the verified support email (support@xplorscent.com).
+- FAQ content synced to the live store's claims: longevity now "up to 12 hours",
+  new "Do you offer samples or testers?" answer pointing at the Discovery Set
+  (fixes the live site's outdated "no testers" answer).
+- About template founder copy tightened to the verified live narrative.
+- Store setup guide: Charity page, footer menu including Charity, and the two live
+  blogs (*Scented Reflections*, *Whispers Of Inspirations*) documented.
+
 ## [1.1.0] — 2026-07-06
 
 Catalog integration release: the theme now ships with the live Xplor Scent catalog and

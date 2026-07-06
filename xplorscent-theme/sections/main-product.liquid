@@ -206,6 +206,9 @@
                 {%- if block.settings.item_3 != blank -%}
                   <span class="product__trust-item">{% render 'icon', icon: 'shield', size: 18 %}{{ block.settings.item_3 | escape }}</span>
                 {%- endif -%}
+                {%- if block.settings.item_4 != blank -%}
+                  <span class="product__trust-item">{% render 'icon', icon: 'star', size: 18 %}{{ block.settings.item_4 | escape }}</span>
+                {%- endif -%}
               </div>
 
             {%- when 'accordion' -%}
@@ -371,7 +374,8 @@
       "settings": [
         { "type": "text", "id": "item_1", "label": "Item 1 (shipping)", "default": "Free shipping over $75" },
         { "type": "text", "id": "item_2", "label": "Item 2 (returns)", "default": "30-day returns" },
-        { "type": "text", "id": "item_3", "label": "Item 3 (guarantee)", "default": "Secure checkout" }
+        { "type": "text", "id": "item_3", "label": "Item 3 (guarantee)", "default": "Secure checkout" },
+        { "type": "text", "id": "item_4", "label": "Item 4 (award)", "info": "Shown with a star icon. Leave blank to hide." }
       ]
     },
     {
