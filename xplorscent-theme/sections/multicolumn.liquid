@@ -11,7 +11,7 @@
       </div>
     {%- endif -%}
 
-    <div class="grid multicolumn reveal" style="--multicolumn-cols: {{ section.settings.columns_desktop }};" role="list">
+    <div class="grid multicolumn reveal-group" style="--multicolumn-cols: {{ section.settings.columns_desktop }};" role="list">
       {%- for block in section.blocks -%}
         <div class="multicolumn__item{% if section.settings.center_content %} multicolumn__item--center{% endif %}" role="listitem" {{ block.shopify_attributes }}>
           {%- if block.settings.image != blank -%}

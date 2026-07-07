@@ -16,7 +16,7 @@
           <a href="{{ collection.url }}" class="button button--secondary">{{ 'products.facets.clear_all' | t }}</a>
         </div>
       {%- else -%}
-        <div class="product-grid product-grid--4" role="list">
+        <div class="product-grid product-grid--4 reveal-group" role="list">
           {%- for product in collection.products -%}
             <div role="listitem">
               {%- liquid

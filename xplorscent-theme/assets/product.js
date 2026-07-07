@@ -70,7 +70,13 @@
         }
       });
 
-      if (priceEl) priceEl.textContent = window.themeUtils.formatMoney(variant.price);
+      if (priceEl) {
+        priceEl.textContent = window.themeUtils.formatMoney(variant.price);
+        const priceWrap = priceEl.closest('.price') || priceEl;
+        priceWrap.classList.remove('price-flash');
+        void priceWrap.offsetWidth; /* restart the flash */
+        priceWrap.classList.add('price-flash');
+      }
       if (compareEl) {
         if (variant.compare_at_price && variant.compare_at_price > variant.price) {
           compareEl.textContent = window.themeUtils.formatMoney(variant.compare_at_price);

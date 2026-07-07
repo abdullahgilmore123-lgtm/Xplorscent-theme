@@ -52,6 +52,11 @@
     document.querySelectorAll('[data-cart-count-bubble]').forEach((bubble) => {
       bubble.textContent = count > 0 ? (count > 99 ? '99+' : count) : '';
       bubble.classList.toggle('visually-hidden', count === 0);
+      if (count > 0) {
+        bubble.classList.remove('bubble-pop');
+        void bubble.offsetWidth; /* restart the pop animation */
+        bubble.classList.add('bubble-pop');
+      }
     });
   };
 
@@ -317,22 +322,30 @@
 
   /* Scroll reveal --------------------------------------------------------------- */
 
+  const REVEAL_SELECTOR = '.reveal, .reveal-group, .reveal-mask';
   if ('IntersectionObserver' in window && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
-    const observer = new IntersectionObserver(
+    const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-revealed');
-            observer.unobserve(entry.target);
+            revealObserver.unobserve(entry.target);
           }
         });
       },
       { rootMargin: '0px 0px -8% 0px' }
     );
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    window.themeUtils.observeReveals = (root) => {
+      (root || document).querySelectorAll(REVEAL_SELECTOR).forEach((el) => {
+        if (!el.classList.contains('is-revealed')) revealObserver.observe(el);
+      });
+    };
   } else {
-    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-revealed'));
+    window.themeUtils.observeReveals = (root) => {
+      (root || document).querySelectorAll(REVEAL_SELECTOR).forEach((el) => el.classList.add('is-revealed'));
+    };
   }
+  window.themeUtils.observeReveals(document);
 
   /* Subtle parallax ---------------------------------------------------------------- */
 
@@ -525,6 +538,7 @@
         const fresh = doc.querySelector('related-products');
         if (fresh && fresh.innerHTML.trim().length) {
           this.innerHTML = fresh.innerHTML;
+          if (window.themeUtils.observeReveals) window.themeUtils.observeReveals(this);
         } else {
           this.hideSection();
         }

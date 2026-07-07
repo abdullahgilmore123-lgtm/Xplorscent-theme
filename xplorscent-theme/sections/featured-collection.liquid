@@ -17,7 +17,7 @@
       {%- endif -%}
     </div>
 
-    <div class="product-grid product-grid--4{% if section.settings.enable_mobile_scroll %} product-grid--scroll{% endif %} reveal" role="list">
+    <div class="product-grid product-grid--4{% if section.settings.enable_mobile_scroll %} product-grid--scroll{% endif %} reveal-group" role="list">
       {%- if collection != blank -%}
         {%- for product in collection.products limit: products_to_show -%}
           <div role="listitem">

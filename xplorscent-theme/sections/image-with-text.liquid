@@ -1,7 +1,7 @@
 <section class="section{% if section.settings.background == 'surface' %} color-surface{% endif %}">
   <div class="container">
     <div class="image-with-text{% if section.settings.layout == 'text_first' %} image-with-text--reverse{% endif %} reveal">
-      <div class="image-with-text__media media {% if section.settings.image_ratio == 'square' %}media--square{% else %}media--portrait{% endif %}">
+      <div class="image-with-text__media media reveal-mask {% if section.settings.image_ratio == 'square' %}media--square{% else %}media--portrait{% endif %}">
         {%- if section.settings.image != blank -%}
           {{
             section.settings.image

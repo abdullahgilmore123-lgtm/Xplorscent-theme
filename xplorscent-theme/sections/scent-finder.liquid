@@ -17,7 +17,7 @@
       {%- endif -%}
     </div>
 
-    <div class="grid scent-finder reveal" style="--scent-finder-cols: {{ section.blocks.size | at_most: 4 | at_least: 2 }};" role="list">
+    <div class="grid scent-finder reveal-group reveal-group--alt" style="--scent-finder-cols: {{ section.blocks.size | at_most: 4 | at_least: 2 }};" role="list">
       {%- for block in section.blocks -%}
         <a
           href="{% if block.settings.link != blank %}{{ block.settings.link }}{% else %}{{ routes.all_products_collection_url }}{% endif %}"

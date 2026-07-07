@@ -2,6 +2,39 @@
 
 All notable changes and the design decisions behind them.
 
+## [1.7.0] — 2026-07-07
+
+Motion release: world-class motion design layered onto the existing design —
+zero changes to layout, typography, colors, spacing or content.
+
+### Motion system
+- Easing tokens `--ease-out` (0.22,1,0.36,1) and `--ease-inout` (0.65,0,0.35,1);
+  interactions 200–400 ms, reveals 500–900 ms, nothing bouncy.
+- Everything gated behind `html.js` + `prefers-reduced-motion`; CSS-only where
+  possible, rAF-throttled where not; no libraries.
+
+### Choreography
+- **Hero load-in**: eyebrow → headline → subheading → buttons rise in sequence;
+  scroll cue fades last. Ken Burns / parallax media (existing) unchanged.
+- **Scroll reveals** (all trigger once): staggered product cards, alternating
+  slide-in for collection and scent-family cards, soft clip-path mask + settle-zoom
+  for editorial imagery, one-by-one fragrance-note pills inside the story scene,
+  staggered signatures-index rows.
+- **Floating**: manifesto imagery and the signatures reveal panel drift gently
+  (9–11 s alternating loops).
+- **Hovers**: product cards lift with soft shadow; collection cards get a subtle
+  perspective tilt; scent cards lift; buttons rise 1 px with light shadow and press
+  down on click; nav links get an animated underline; footer/prose links get a
+  drawing underline; arrow links nudge forward.
+- **Drawers**: cart line items cascade in after the panel; mobile menu items stagger
+  from the left; search overlay content follows the panel with a beat; dropdown
+  menus ease with the new curve.
+- **Product page**: accordion content fades-rises on open; variant price flashes on
+  change; cart-count bubble pops on add/update; sticky add-to-cart now fades as it
+  slides; related/recently-viewed products animate after injection.
+- **Page transitions**: near-invisible page-enter settle plus cross-document View
+  Transitions (progressive enhancement, 180 ms).
+
 ## [1.6.0] — 2026-07-06
 
 Flagship release: the homepage becomes a scene-based journey and the entire visual

@@ -9,7 +9,7 @@
       {%- endif -%}
     </div>
 
-    <div class="grid collection-list reveal" style="--collection-list-cols: {{ section.blocks.size | at_most: 4 | at_least: 2 }};" role="list">
+    <div class="grid collection-list reveal-group reveal-group--alt" style="--collection-list-cols: {{ section.blocks.size | at_most: 4 | at_least: 2 }};" role="list">
       {%- for block in section.blocks -%}
         {%- assign collection = block.settings.collection -%}
         <a
